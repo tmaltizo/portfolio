@@ -22,8 +22,10 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
+        working-directory: ./react-portfolio
       - name: Detect package manager 👻
         id: detect-package-manager
+        working-directory: ./react-portfolio
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "::set-output name=manager::yarn"
@@ -41,6 +43,7 @@ jobs:
           fi
       - name: Setup Node 🍉
         uses: actions/setup-node@v3
+        working-directory: ./react-portfolio
         with:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           node-version: '19.6.1'
@@ -48,6 +51,7 @@ jobs:
       - name: Setup Pages 🔧
         id: pages
         uses: actions/configure-pages@v1
+        working-directory: ./react-portfolio
         with:
           # Automatically inject basePath in your Next.js configuration file and disable
           # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
@@ -56,6 +60,7 @@ jobs:
           static_site_generator: next
       - name: Restore cache 💾
         uses: actions/cache@v3
+        working-directory: ./react-portfolio
         with:
           path: |
             .next/cache
@@ -65,12 +70,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies 🥑
+        working-directory: ./react-portfolio
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js 🍄
+        working-directory: ./react-portfolio
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js 🥯
+        working-directory: ./react-portfolio
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact ⛱️
+        working-directory: ./react-portfolio
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
@@ -86,3 +95,4 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v1
+        working-directory: ./react-portfolio
