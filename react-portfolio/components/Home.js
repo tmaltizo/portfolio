@@ -141,7 +141,7 @@ export default function Home() {
           {/* handles */}
           <section className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
             <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-gray-100"><AiFillLinkedin /></a>
-            <a href="https://github.com/maltizo2" target="_blank" className="hover:cursor-pointer hover:text-gray-100"><AiFillGithub /></a> 
+            <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:text-gray-100"><AiFillGithub /></a> 
           </section>
         </div>
       </main>
