@@ -43,23 +43,23 @@ export default function Home() {
           {/* navbar implement scroll */}
           <nav className="pt-10 pr-10 pl-10 flex justify-between dark:text-white">
             <h1 className="text-xl font-mono">trizothethird</h1>
-            <ul className="flex items-center">
-                <li className="invisible lg:visible">
+            <ul className="lg:flex items-center invisible lg:visible">
+                <li>
                 <Link activeClass="active" smooth spy to="home" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Home
                 </Link>
                 </li>
-                <li className="invisible lg:visible">
+                <li>
                 <Link activeClass="active" smooth spy to="toolkit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Toolkit
                 </Link>
                 </li>
-                <li className="invisible lg:visible">
+                <li>
                 <Link activeClass="active" smooth spy to="about" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     About
                 </Link>
                 </li>
-                <li className="invisible lg:visible">
+                <li>
                 <Link activeClass="active" smooth spy to="connect" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Connect
                 </Link>
