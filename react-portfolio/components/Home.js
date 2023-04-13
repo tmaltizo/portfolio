@@ -44,46 +44,26 @@ export default function Home() {
           <nav className="pt-10 pr-10 pl-10 flex justify-between dark:text-white">
             <h1 className="text-xl font-mono">trizothethird</h1>
             <ul className="flex items-center">
-                <li>
+                <li className="invisible lg:visible">
                 <Link activeClass="active" smooth spy to="home" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Home
                 </Link>
                 </li>
-                <li>
+                <li className="invisible lg:visible">
                 <Link activeClass="active" smooth spy to="toolkit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Toolkit
                 </Link>
                 </li>
-                <li>
+                <li className="invisible lg:visible">
                 <Link activeClass="active" smooth spy to="about" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     About
                 </Link>
                 </li>
-                <li>
+                <li className="invisible lg:visible">
                 <Link activeClass="active" smooth spy to="connect" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
                     Connect
                 </Link>
                 </li>
-              {/* <li>
-                <a className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400" href="#">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400" href="#">
-                  Toolkit
-                </a>
-              </li>
-              <li>
-                <a className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400" href="#">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400" href="#">
-                  Connect
-                </a>
-              </li> */}
               <li>
                 <BsFillMoonStarsFill 
                   onClick={() => setDarkMode(!darkMode)} 
