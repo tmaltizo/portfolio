@@ -37,7 +37,7 @@ export default function Home() {
         <meta name="Portfolio" content="trizothethird's personal website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-slate-50 px-10 dark:bg-gray-900">
+      <main className="bg-white px-10 dark:bg-gray-900">
         <div className="min-h-screen 2xl:mx-60">
 
           {/* navbar implement scroll */}
