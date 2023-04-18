@@ -45,7 +45,7 @@ export default function Contact() {
           onChange={handleNameChange}
           placeholder="Enter your name"
           required
-          className="border rounded-md p-2 w-full"
+          className="border rounded-md p-2 w-full text-black"
         />
         <label htmlFor="email" className="text-xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Email</label>
         <input
@@ -56,7 +56,7 @@ export default function Contact() {
           onChange={handleEmailChange}
           placeholder="Enter your email"
           required
-          className="border rounded-md p-2 w-full"
+          className="border rounded-md p-2 w-full text-black"
         />
         <label htmlFor="message" className="text-xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Message</label>
         <textarea
@@ -66,7 +66,7 @@ export default function Contact() {
           onChange={handleMessageChange}
           placeholder="Enter your message"
           required
-          className="border rounded-md p-2 w-full"
+          className="border rounded-md p-2 w-full text-black"
           rows="5"
         />
         <button type="submit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
