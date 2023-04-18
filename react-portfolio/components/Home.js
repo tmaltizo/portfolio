@@ -76,7 +76,7 @@ export default function Home() {
 
           {/* home */}
           <section id="home" className="text-center pb-10 pr-10 pl-10 mt-35 mb-40">
-            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 mb-5">
+            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mt-20 mb-5">
                 <Image src={portrait} alt="Picture of the author" />
             </div>
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-5xl">Hello! <span className= "dark:text-purple-200 text-purple-400">I'm Tristan.</span> 👋</h2>
@@ -106,7 +106,7 @@ export default function Home() {
           {/* about */}
           <section id="about" className="text-center pb-10 pr-10 pl-10 my-10">
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">About <span className= "dark:text-purple-200 text-purple-400">Me</span> 😎</h2>
-            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-80 h-80 relative overflow-hidden mb-5 md:h-96 md:w-96">
+            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mb-5">
                 <Image src={realportrait} alt="Picture of the author" />
             </div>
             <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">I am graduating in May 2023 from <span className= "dark:text-purple-500 text-purple-800">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
