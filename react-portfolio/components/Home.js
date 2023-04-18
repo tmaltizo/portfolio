@@ -75,8 +75,8 @@ export default function Home() {
           </nav>
 
           {/* home */}
-          <section id="home" className="text-center pb-10 pr-10 pl-10 mt-35 mb-40">
-            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mt-20 mb-5">
+          <section id="home" className="text-center pb-10 pr-10 pl-10 mt-35 mb-60">
+            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mt-40 mb-5">
                 <Image src={portrait} alt="Picture of the author" />
             </div>
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-5xl">Hello! <span className= "dark:text-purple-200 text-purple-400">I'm Tristan.</span> 👋</h2>
