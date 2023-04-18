@@ -116,7 +116,7 @@ export default function Home() {
           {/* connect */}
           <section id="connect" className="text-center pb-10 pr-10 pl-10 mt-10">
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">Let's <span className= "dark:text-purple-200 text-purple-400">Connect</span> 📞</h2>
-            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me an email message below. You can also explore my LinkedIn and Github below. See you again!</p>
+            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github below. See you again!</p>
             <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
               <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillLinkedin /></a>
               <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillGithub /></a> 
