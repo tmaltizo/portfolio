@@ -42,7 +42,7 @@ export default function Home() {
         <div className="min-h-screen 2xl:mx-60">
 
           {/* navbar implement scroll */}
-          <nav className="pt-10 pr-10 pl-10 flex justify-between dark:text-white">
+          <nav id="home" className="pt-10 pr-10 pl-10 flex justify-between dark:text-white">
             <h1 className="text-xl font-mono">trizothethird</h1>
             <ul className="lg:flex items-center invisible lg:visible">
                 <li>
@@ -75,7 +75,7 @@ export default function Home() {
           </nav>
 
           {/* home */}
-          <section id="home" className="text-center pb-10 pr-10 pl-10 mt-35 mb-60">
+          <section className="text-center pb-10 pr-10 pl-10 mt-35 mb-60">
             <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mt-40 mb-5">
                 <Image src={portrait} alt="Picture of the author" />
             </div>
