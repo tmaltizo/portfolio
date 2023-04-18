@@ -72,7 +72,7 @@ export default function Contact() {
         {isSent && (
           <p className="text-green-400 mt-2">Email sent successfully. I'll try to reply as soon as possible!</p>
         )}
-        <button type="submit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+        <button type="submit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 my-3 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
           Send
         </button>
       </form>
