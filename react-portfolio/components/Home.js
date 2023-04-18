@@ -8,6 +8,7 @@ import {
     FaJava,
     FaPython,
     FaReact,
+    FaRobot,
 } from "react-icons/fa";
 import {
     IoLogoJavascript,
@@ -89,16 +90,18 @@ export default function Home() {
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">My <span className= "dark:text-purple-200 text-purple-400">Toolkit</span> 🛠️</h2>
             <div className="text-9xl flex justify-center gap-16 py-3 text-gray-600 dark:text-purple-300 m-30">
                 <ul className="flex flex-wrap items-center">
-                    <li><FaPython /><div className="text-5xl my-3">Python</div></li>
                     <li><FaReact /><div className="text-5xl my-3">React</div></li>
-                    <li><IoLogoJavascript /><div className="text-5xl my-3">Javascript</div></li>
-                    <li><TbBrandCpp /><div className="text-5xl my-3">C/C++</div></li>
                     <li><TbBrandHtml5 /><div className="text-5xl my-3">HTML</div></li>
                     <li><TbBrandCss3 /><div className="text-5xl my-3">CSS</div></li>
-                    <li><TbSql /><div className="text-5xl my-3">SQL</div></li>
+                    <li><IoLogoJavascript /><div className="text-5xl my-3">Javascript</div></li>
+                    <li><TbBrandCpp /><div className="text-5xl my-3">C/C++</div></li>
+                    <li><FaJava /><div className="text-5xl my-3">Java</div></li>
+                    <li><FaPython /><div className="text-5xl my-3">Python</div></li>
+                    <li><TbSql /><div className="text-5xl my-3">SQLite</div></li>
                     <li><TbBrandFirebase /><div className="text-5xl my-3">Firebase</div></li>
                     <li><TbBrandGithub /><div className="text-5xl my-3">Git</div></li>
-                    <li><TbBrandTailwind /><div className="text-5xl my-3">Tailwind</div></li>   
+                    <li><TbBrandTailwind /><div className="text-5xl my-3">Tailwind</div></li>
+                    <li><FaRobot /><div className="text-5xl my-3">Automation</div></li>
                 </ul>        
             </div>
           </section>
