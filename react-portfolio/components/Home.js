@@ -26,6 +26,7 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import portrait from "public/portrait.jpg";
 import realportrait from "public/realportrait.jpg";
+import Contact from 'components/Contact.js'
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -86,7 +87,7 @@ export default function Home() {
           {/* toolkit */}
           <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">My <span className= "dark:text-purple-200 text-purple-400">Toolkit</span> 🛠️</h2>
-            <div className="text-9xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400 m-30">
+            <div className="text-9xl flex justify-center gap-16 py-3 text-gray-600 dark:text-purple-300 m-30">
                 <ul className="flex flex-wrap items-center">
                     <li><FaPython /></li>
                     <li><FaReact /></li>
@@ -108,21 +109,24 @@ export default function Home() {
             <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-80 h-80 relative overflow-hidden mb-5 md:h-96 md:w-96">
                 <Image src={realportrait} alt="Picture of the author" />
             </div>
-            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">I am graduating from <span className= "dark:text-purple-500 text-purple-800">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
+            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">I am graduating in May 2023 from <span className= "dark:text-purple-500 text-purple-800">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
             <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl"> Ever since I was a little kid, I have been passionate about Computer Science and its quickly evolving industry. As a CS major, I am always motivated to working with others in fields related to Software Development, Data Science, Machine Learning, and/or Cybersecurity. </p>
           </section>
 
           {/* connect */}
-          <section id="connect" className="text-center pb-10 pr-10 pl-10 my-10">
+          <section id="connect" className="text-center pb-10 pr-10 pl-10 mt-10">
             <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">Let's <span className= "dark:text-purple-200 text-purple-400">Connect</span> 📞</h2>
-            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Thanks for visiting my website! Feel free to explore my handles below. See you again!</p>
+            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me an email message below. You can also explore my LinkedIn and Github below. See you again!</p>
+            <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
+              <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillLinkedin /></a>
+              <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillGithub /></a> 
+            </div>
           </section>
 
+          {/* contact */}
+          <Contact />
+
           {/* handles */}
-          <section className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-            <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-gray-100"><AiFillLinkedin /></a>
-            <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:text-gray-100"><AiFillGithub /></a> 
-          </section>
         </div>
       </main>
     </div>
