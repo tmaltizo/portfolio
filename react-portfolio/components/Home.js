@@ -19,7 +19,12 @@ import {
   TbSql,
   TbBrandFirebase,
   TbBrandTailwind,
+  TbBrandAws,
+  TbBrandGithub,
+  TbSparkles,
+  TbChevronRight,
 } from "react-icons/tb";
+import { SiTerraform } from "react-icons/si";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-scroll";
@@ -86,18 +91,23 @@ export default function Home() {
           {/* toolkit */}
           <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
             <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">My <span className="text-light-accent dark:text-dark-accent">Toolkit</span> 🛠️</h2>
-            <div className="text-9xl py-3 text-light-accent dark:text-dark-accent m-30">
-              <ul className="flex flex-wrap items-center justify-around w-full gap-8">
-                <li className="flex flex-col items-center"><FaReact /><div className="text-5xl my-3">React</div></li>
-                <li className="flex flex-col items-center"><TbBrandHtml5 /><div className="text-5xl my-3">HTML</div></li>
-                <li className="flex flex-col items-center"><TbBrandCss3 /><div className="text-5xl my-3">CSS</div></li>
-                <li className="flex flex-col items-center"><IoLogoJavascript /><div className="text-5xl my-3">Javascript</div></li>
-                <li className="flex flex-col items-center"><TbBrandCpp /><div className="text-5xl my-3">C/C++</div></li>
-                <li className="flex flex-col items-center"><FaJava /><div className="text-5xl my-3">Java</div></li>
-                <li className="flex flex-col items-center"><FaPython /><div className="text-5xl my-3">Python</div></li>
-                <li className="flex flex-col items-center"><TbSql /><div className="text-5xl my-3">SQLite</div></li>
-                <li className="flex flex-col items-center"><TbBrandFirebase /><div className="text-5xl my-3">Firebase</div></li>
-                <li className="flex flex-col items-center"><TbBrandTailwind /><div className="text-5xl my-3">Tailwind</div></li>
+            <div className="text-6xl py-3 text-light-accent dark:text-dark-accent m-10">
+              <ul className="flex flex-wrap items-center justify-around w-full gap-6">
+                <li className="flex flex-col items-center"><FaReact /><div className="text-3xl my-2">React</div></li>
+                <li className="flex flex-col items-center"><TbBrandHtml5 /><div className="text-3xl my-2">HTML</div></li>
+                <li className="flex flex-col items-center"><TbBrandCss3 /><div className="text-3xl my-2">CSS</div></li>
+                <li className="flex flex-col items-center"><IoLogoJavascript /><div className="text-3xl my-2">Javascript</div></li>
+                <li className="flex flex-col items-center"><TbBrandCpp /><div className="text-3xl my-2">C/C++</div></li>
+                <li className="flex flex-col items-center"><FaJava /><div className="text-3xl my-2">Java</div></li>
+                <li className="flex flex-col items-center"><FaPython /><div className="text-3xl my-2">Python</div></li>
+                <li className="flex flex-col items-center"><TbSql /><div className="text-3xl my-2">SQLite</div></li>
+                <li className="flex flex-col items-center"><TbBrandFirebase /><div className="text-3xl my-2">Firebase</div></li>
+                <li className="flex flex-col items-center"><TbBrandTailwind /><div className="text-3xl my-2">Tailwind</div></li>
+                <li className="flex flex-col items-center"><TbBrandAws /><div className="text-3xl my-2">AWS</div></li>
+                <li className="flex flex-col items-center"><SiTerraform /><div className="text-3xl my-2">Terraform</div></li>
+                <li className="flex flex-col items-center"><TbChevronRight /><div className="text-3xl my-2">Splunk</div></li>
+                <li className="flex flex-col items-center"><TbBrandGithub /><div className="text-3xl my-2">CI/CD</div></li>
+                <li className="flex flex-col items-center"><TbSparkles /><div className="text-3xl my-2">GenAI</div></li>
               </ul>
             </div>
           </section>
