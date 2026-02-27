@@ -39,42 +39,42 @@ export default function Home() {
         <meta name="Portfolio" content="trizothethird&apos;s personal website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-white px-10 dark:bg-gray-900">
+      <main className="bg-light-bg dark:bg-dark-bg px-10 text-light-text dark:text-dark-text">
         <div className="min-h-screen 2xl:mx-60">
 
           {/* navbar implement scroll */}
-          <nav id="home" className="pt-10 pr-10 pl-10 flex justify-between dark:text-white">
+          <nav id="home" className="pt-10 pr-10 pl-10 flex justify-between text-light-text dark:text-dark-text">
             <h1 className="text-xl font-mono">trizothethird</h1>
             <ul className="lg:flex items-center invisible lg:visible">
               <li>
-                <a href="https://blp25.290028062.repl.co/" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+                <a href="https://blp25.290028062.repl.co/" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
                   Return
                 </a>
               </li>
               <li>
-                <Link activeClass="active" smooth spy to="home" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+                <Link activeClass="active" smooth spy to="home" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
                   Home
                 </Link>
               </li>
               <li>
-                <Link activeClass="active" smooth spy to="toolkit" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+                <Link activeClass="active" smooth spy to="toolkit" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
                   Toolkit
                 </Link>
               </li>
               <li>
-                <Link activeClass="active" smooth spy to="about" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+                <Link activeClass="active" smooth spy to="about" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
                   About
                 </Link>
               </li>
               <li>
-                <Link activeClass="active" smooth spy to="connect" className="bg-purple-800 dark:bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-purple-500 dark:hover:bg-purple-400">
+                <Link activeClass="active" smooth spy to="connect" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
                   Connect
                 </Link>
               </li>
               <li>
                 <BsFillMoonStarsFill
                   onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl hover:text-gray-400"
+                  className="cursor-pointer text-2xl text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover"
                 />
               </li>
             </ul>
@@ -82,18 +82,18 @@ export default function Home() {
 
           {/* home */}
           <section className="text-center pb-10 pr-10 pl-10 mt-35 mb-60">
-            <div className="animate-bounce mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mt-40 mb-5">
+            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-60 h-60 relative overflow-hidden mt-40 mb-5">
               <Image src={portrait} alt="Picture of the author" />
             </div>
-            <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-5xl">Hello! <span className="dark:text-purple-200 text-purple-400">I&apos;m Tristan.</span> 👋</h2>
-            <h3 className="text-2xl py-2 text-purple-800 dark:text-purple-300 md:text-3xl">A multi-fauceted coding professional with a passion for creating cool web designs 🖥️ and cultivating innovation 💡</h3>
-            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">I currently work with the Cybersecurity team at <span className="dark:text-yellow-100 text-yellow-500">Synchrony</span>!</p>
+            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-5xl">Hello! <span className="text-light-accent dark:text-dark-accent">I&apos;m Tristan.</span> 👋</h2>
+            <h3 className="text-2xl py-2 text-light-text dark:text-dark-text md:text-3xl">A multi-fauceted coding professional with a passion for creating cool web designs 🖥️ and cultivating innovation 💡</h3>
+            <p className="text-2xl py-2 text-light-text dark:text-dark-text md:text-2xl">I currently work with the Cybersecurity team at <span className="text-light-accent dark:text-dark-accent">Synchrony</span>!</p>
           </section>
 
           {/* toolkit */}
           <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
-            <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">My <span className="dark:text-purple-200 text-purple-400">Toolkit</span> 🛠️</h2>
-            <div className="text-9xl flex justify-center gap-16 py-3 text-gray-600 dark:text-purple-300 m-30">
+            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">My <span className="text-light-accent dark:text-dark-accent">Toolkit</span> 🛠️</h2>
+            <div className="text-9xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent m-30">
               <ul className="flex flex-wrap items-center">
                 <li><FaReact /><div className="text-5xl my-3">React</div></li>
                 <li><TbBrandHtml5 /><div className="text-5xl my-3">HTML</div></li>
@@ -113,26 +113,26 @@ export default function Home() {
 
           {/* about */}
           <section id="about" className="text-center pb-10 pr-10 pl-10 my-10">
-            <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">About <span className="dark:text-purple-200 text-purple-400">Me</span> 😎</h2>
-            <div className="mx-auto bg-gradient-to-b from-purple-500 rounded-full w-60 h-60 relative overflow-hidden mb-5">
+            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">About <span className="text-light-accent dark:text-dark-accent">Me</span> 😎</h2>
+            <div className="mx-auto bg-gradient-to-b from-light-accent rounded-full w-60 h-60 relative overflow-hidden mb-5">
               <Image src={realportrait} alt="Picture of the author" />
             </div>
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl">I graduated in May 2023 from <span className="dark:text-purple-500 text-purple-800">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl"><span className="dark:text-purple-500 text-purple-800">Values:</span> Leadership, Communication, Visibility.</p>
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl"><span className="dark:text-purple-500 text-purple-800">Hobbies:</span> Videogames 🎮, Skateboarding 🛹, Traveling ✈️</p>
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl"><span className="dark:text-purple-500 text-purple-800">Fun Facts:</span></p>
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl">1. I was a high school marching band section leader 🎷</p> 
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl">2. I taught cooking courses on zoom during quarantine 🍳</p> 
-            <p className="text-2xl py-1 text-purple-800 dark:text-purple-200 md:text-2xl">3. I went to a Miss Universe beauty pageant 💃</p> 
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">I graduated in May 2023 from <span className="text-light-text-dark dark:text-dark-text">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl"><span className="text-light-text-dark dark:text-dark-text">Values:</span> Leadership, Communication, Visibility.</p>
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl"><span className="text-light-text-dark dark:text-dark-text">Hobbies:</span> Videogames 🎮, Skateboarding 🛹, Traveling ✈️</p>
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl"><span className="text-light-text-dark dark:text-dark-text">Fun Facts:</span></p>
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">1. I was a high school marching band section leader 🎷</p> 
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">2. I taught cooking courses on zoom during quarantine 🍳</p> 
+            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">3. I went to a Miss Universe beauty pageant 💃</p> 
           </section>
 
           {/* connect */}
           <section id="connect" className="text-center pb-10 pr-10 pl-10 mt-10">
-            <h2 className="text-4xl py-2 text-purple-800 font-medium dark:text-purple-500 md:text-4xl my-10">Let&apos;s <span className="dark:text-purple-200 text-purple-400">Connect</span> 📞</h2>
-            <p className="text-2xl py-2 text-purple-800 dark:text-purple-200 md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
-            <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-              <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillLinkedin /></a>
-              <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:dark:text-gray-100 hover:text-black"><AiFillGithub /></a>
+            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">Let&apos;s <span className="text-light-accent dark:text-dark-accent">Connect</span> 📞</h2>
+            <p className="text-2xl py-2 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
+            <div className="text-5xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent">
+              <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillLinkedin /></a>
+              <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillGithub /></a>
             </div>
           </section>
 
