@@ -3,6 +3,9 @@ import Head from 'next/head'
 import {
   AiFillLinkedin,
   AiFillGithub,
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineMail,
 } from "react-icons/ai";
 import {
   FaJava,
@@ -21,6 +24,7 @@ import {
   TbBrandTailwind,
   TbBrandAws,
   TbBrandGithub,
+  TbBrandReact,
   TbSparkles,
   TbChevronRight,
 } from "react-icons/tb";
@@ -38,94 +42,102 @@ export default function Home() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <Head>
-        <title>Portfolio</title>
+        <title>trizothethird&apos;s Portfolio</title>
+        <meta name="description" content="Tristan Maltizo&apos;s personal portfolio and digital garden" />
         <meta name="Portfolio" content="trizothethird&apos;s personal website" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/portrait-transparent.png" />
+        {/* optionally add other favicons/og tags */}
+        <meta property="og:title" content="trizothethird&apos;s Portfolio" />
+        <meta property="og:description" content="A multi-faceted software professional and digital garden" />
+        <meta property="og:image" content="/portrait.jpg" />
       </Head>
-      <main className="bg-light-bg dark:bg-dark-bg px-10 text-light-text dark:text-dark-text">
+      <main className="bg-light-bg dark:bg-dark-bg pt-8 px-10 pr-12 sm:pr-20 text-light-text dark:text-dark-text">
+          {/* site header */}
+          <header id="home" className="text-center sm:text-left mb-4 w-full">
+            <h1 className="font-mono text-base md:text-lg lg:text-xl">
+              trizothethird
+            </h1>
+          </header>
         <div className="min-h-screen 2xl:mx-60">
 
-          {/* navbar implement scroll */}
-          <nav id="home" className="pt-10 pr-10 pl-10 flex justify-between text-light-text dark:text-dark-text">
-            <h1 className="text-xl font-mono">trizothethird</h1>
-            <ul className="lg:flex items-center invisible lg:visible">
-              <li>
-                <Link activeClass="active" smooth spy to="home" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link activeClass="active" smooth spy to="toolkit" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
-                  Toolkit
-                </Link>
-              </li>
-              <li>
-                <Link activeClass="active" smooth spy to="about" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link activeClass="active" smooth spy to="connect" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
-                  Connect
-                </Link>
-              </li>
-              <li>
-                <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover"
-                />
-              </li>
-            </ul>
+          {/* minimal icon sidebar */}
+          <nav className="fixed top-0 right-0 h-screen w-10 sm:w-12 flex flex-col items-center p-2 bg-light-bg bg-opacity-40 dark:bg-dark-bg dark:bg-opacity-40 backdrop-blur z-50">
+            {/* toggle at top */}
+            <button
+              aria-label="toggle dark mode"
+              onClick={() => setDarkMode(!darkMode)}
+              className="mt-2 text-lg sm:text-xl text-light-accent dark:text-dark-accent hover:scale-110 transition"
+            >
+              <BsFillMoonStarsFill />
+            </button>
+
+            {/* centred icon links */}
+            <div className="mt-auto mb-auto flex flex-col items-center space-y-6">
+              <Link to="home" smooth title="Welcome" className="text-lg sm:text-xl hover:scale-110 transition">
+                <AiOutlineHome />
+                <span className="sr-only">Welcome</span>
+              </Link>
+              <Link to="about" smooth title="About" className="text-lg sm:text-xl hover:scale-110 transition">
+                <AiOutlineInfoCircle />
+                <span className="sr-only">About</span>
+              </Link>
+              <Link to="toolkit" smooth title="Toolkit" className="text-lg sm:text-xl hover:scale-110 transition">
+                <TbBrandReact />
+                <span className="sr-only">Toolkit</span>
+              </Link>
+              <Link to="connect" smooth title="Connect" className="text-lg sm:text-xl hover:scale-110 transition">
+                <AiOutlineMail />
+                <span className="sr-only">Connect</span>
+              </Link>
+            </div>
           </nav>
 
-          {/* home */}
-          <section className="text-center pb-10 pr-10 pl-10 mt-35 mb-60">
-            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-60 h-60 relative overflow-hidden mt-40 mb-5">
+          <section className="text-center px-10 mt-0 min-h-screen sm:min-h-0 sm:mb-60 flex flex-col justify-center sm:justify-start pb-20 sm:pb-10">
+            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-40 h-40 sm:w-60 sm:h-60 relative overflow-hidden mt-6 sm:mt-40 mb-5">
               <Image src={portrait} alt="Picture of the author" />
             </div>
-            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-5xl">Hello! <span className="text-light-accent dark:text-dark-accent">I&apos;m Tristan.</span> 👋</h2>
-            <h3 className="text-2xl py-2 text-light-text dark:text-dark-text md:text-3xl">A multi-fauceted coding professional with a passion for creating cool web designs 🖥️ and cultivating innovation 💡</h3>
-            <p className="text-2xl py-2 text-light-text dark:text-dark-text md:text-2xl">I currently work as a Solution Architect at <span className="text-light-accent dark:text-dark-accent">Synchrony</span>!</p>
-          </section>
-
-          {/* toolkit */}
-          <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
-            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">My <span className="text-light-accent dark:text-dark-accent">Toolkit</span> 🛠️</h2>
-            <div className="text-6xl py-3 text-light-accent dark:text-dark-accent m-10">
-              <ul className="flex flex-wrap items-center justify-around w-full gap-6">
-                <li className="flex flex-col items-center"><FaReact /><div className="text-3xl my-2">React</div></li>
-                <li className="flex flex-col items-center"><TbBrandHtml5 /><div className="text-3xl my-2">HTML</div></li>
-                <li className="flex flex-col items-center"><TbBrandCss3 /><div className="text-3xl my-2">CSS</div></li>
-                <li className="flex flex-col items-center"><IoLogoJavascript /><div className="text-3xl my-2">Javascript</div></li>
-                <li className="flex flex-col items-center"><TbBrandCpp /><div className="text-3xl my-2">C/C++</div></li>
-                <li className="flex flex-col items-center"><FaJava /><div className="text-3xl my-2">Java</div></li>
-                <li className="flex flex-col items-center"><FaPython /><div className="text-3xl my-2">Python</div></li>
-                <li className="flex flex-col items-center"><TbSql /><div className="text-3xl my-2">SQLite</div></li>
-                <li className="flex flex-col items-center"><TbBrandFirebase /><div className="text-3xl my-2">Firebase</div></li>
-                <li className="flex flex-col items-center"><TbBrandTailwind /><div className="text-3xl my-2">Tailwind</div></li>
-                <li className="flex flex-col items-center"><TbBrandAws /><div className="text-3xl my-2">AWS</div></li>
-                <li className="flex flex-col items-center"><SiTerraform /><div className="text-3xl my-2">Terraform</div></li>
-                <li className="flex flex-col items-center"><TbChevronRight /><div className="text-3xl my-2">Splunk</div></li>
-                <li className="flex flex-col items-center"><TbBrandGithub /><div className="text-3xl my-2">CI/CD</div></li>
-                <li className="flex flex-col items-center"><TbSparkles /><div className="text-3xl my-2">GenAI</div></li>
-              </ul>
-            </div>
+            <h2 className="text-2xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-5xl">Hello! <span className="text-light-accent dark:text-dark-accent">I&apos;m Tristan.</span> 👋</h2>
+            <h3 className="text-lg sm:text-2xl py-2 text-light-text dark:text-dark-text md:text-3xl">A multi-faceted software professional currently working as a Solution Architect at <span className="text-light-accent dark:text-dark-accent">Synchrony</span>!</h3>
           </section>
 
           {/* about */}
           <section id="about" className="text-center pb-10 pr-10 pl-10 my-10">
-            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">About <span className="text-light-accent dark:text-dark-accent">Me</span> 😎</h2>
-            <div className="mx-auto bg-gradient-to-b from-light-accent rounded-full w-60 h-60 relative overflow-hidden mb-5">
+            <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">About <span className="text-light-accent dark:text-dark-accent">Me</span> 😎</h2>
+            <div className="mx-auto bg-gradient-to-b from-light-accent rounded-full w-48 h-48 sm:w-60 sm:h-60 relative overflow-hidden mb-5">
               <Image src={realportrait} alt="Picture of the author" />
             </div>
-            <p className="text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">I graduated in May 2023 from <span className="text-light-text-dark dark:text-dark-text">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. </p>
+            <p className="text-lg sm:text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">I graduated from <span className="text-light-text-dark dark:text-dark-text">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. I created this site to serve as my digital garden: here you’ll find a running journal of what I’m learning and building next.</p>
+          </section>
+
+          {/* toolkit */}
+          <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
+            <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">My <span className="text-light-accent dark:text-dark-accent">Toolkit</span> 🛠️</h2>
+            <div className="text-4xl sm:text-6xl py-3 text-light-accent dark:text-dark-accent m-4 sm:m-10">
+              <ul className="grid grid-cols-3 sm:flex flex-wrap items-center justify-around w-full gap-3 sm:gap-6">
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><FaReact /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">React</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandHtml5 /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">HTML</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandCss3 /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">CSS</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><IoLogoJavascript /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Javascript</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandCpp /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">C/C++</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><FaJava /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Java</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><FaPython /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Python</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbSql /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">SQLite</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandFirebase /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Firebase</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandTailwind /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Tailwind</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandAws /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">AWS</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><SiTerraform /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Terraform</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbChevronRight /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">Splunk</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandGithub /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">CI/CD</div></li>
+                <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbSparkles /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">GenAI</div></li>
+              </ul>
+            </div>
           </section>
 
           {/* connect */}
           <section id="connect" className="text-center pb-10 pr-10 pl-10 mt-10">
-            <h2 className="text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">Let&apos;s <span className="text-light-accent dark:text-dark-accent">Connect</span> 📞</h2>
-            <p className="text-2xl py-2 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
-            <div className="text-5xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent">
+            <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">Let&apos;s <span className="text-light-accent dark:text-dark-accent">Connect</span> 📞</h2>
+            <p className="text-lg sm:text-2xl py-2 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
+            <div className="text-4xl sm:text-5xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent">
               <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillLinkedin /></a>
               <a href="https://github.com/maltizo2/portfolio" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillGithub /></a>
             </div>
