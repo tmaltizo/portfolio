@@ -1,19 +1,12 @@
-const nextJest = require('next/jest');
+const nextJest = require('next/jest')
 
-const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-});
+const createJestConfig = nextJest({ dir: './' })
 
-/**
- * @type {import('jest').Config}
- */
-const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+/** @type {import('jest').Config} */
+module.exports = createJestConfig({
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    // Re-map the @/ alias used throughout the project
+    '^@/(.*)$': '<rootDir>/$1',
   },
-};
-
-module.exports = createJestConfig(customJestConfig);
+})
