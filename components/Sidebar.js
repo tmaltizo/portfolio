@@ -75,8 +75,8 @@ export default function Sidebar({ extraLinks = [] }) {
         </button>
       </div>
 
-      {/* Centre-aligned icon links */}
-      <div className="mt-auto mb-auto flex flex-col items-center space-y-0">
+      {/* Top-aligned icon links (placed just below the dark-mode toggle) */}
+      <div className="mt-2 flex flex-col items-center space-y-0">
         {isHome || isAbout ? (
           /* Home page: top icon scrolls to absolute top; about page: same plus extra links */
           <>

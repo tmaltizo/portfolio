@@ -59,6 +59,15 @@ describe('Writing page', () => {
     expect(screen.getByText('An Old Post')).toBeInTheDocument()
   })
 
+  it('constrains the grid within a centered container to avoid edge overflow on mobile', () => {
+    const { container } = render(<WritingPage posts={mockPosts} tags={mockTags} />)
+    // the wrapper div added for max-width should exist
+    const constrained = container.querySelector('.max-w-3xl')
+    expect(constrained).toBeInTheDocument()
+    // it should also have horizontal margin auto
+    expect(constrained).toHaveClass('mx-auto')
+  })
+
   it('renders the TagFilter with available tags', () => {
     render(<WritingPage posts={mockPosts} tags={mockTags} />)
     expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument()

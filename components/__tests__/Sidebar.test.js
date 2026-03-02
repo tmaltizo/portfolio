@@ -27,6 +27,15 @@ describe('Sidebar – tooltip popups', () => {
     expect(toggleWrapper).toHaveClass('mt-1')
   })
 
+  it('positions the other icons immediately below the toggle instead of centering them', () => {
+    render(<Sidebar />)
+    // the container that wraps home/section buttons should now have mt-2
+    const iconsContainer = screen.getByLabelText('Page utilities').querySelector('div:nth-of-type(2)')
+    expect(iconsContainer).toHaveClass('mt-2')
+    expect(iconsContainer).not.toHaveClass('mt-auto')
+    expect(iconsContainer).not.toHaveClass('mb-auto')
+  })
+
   it('tooltip for the home icon is hidden by default', () => {
     render(<Sidebar />)
     const homeWrapper = screen.getByLabelText('Back to top').closest('div')
