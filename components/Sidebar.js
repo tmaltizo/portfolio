@@ -5,7 +5,7 @@
  *   • Dark-mode toggle at the top
  *
  * On the home page (/):
- *   • Smooth-scroll icons for every major section (Welcome, About, Toolkit, Connect)
+ *   • Smooth-scroll icons for every major section (Back to top, About, Toolkit, Connect)
  *
  * On every other page:
  *   • A button that smooth-scrolls to the top of the current page
@@ -82,7 +82,7 @@ export default function Sidebar({ extraLinks = [] }) {
           <>
             <div className="relative group h-10 flex items-center justify-center">
               <span className="absolute right-full top-1/2 -translate-y-1/2 translate-x-0 opacity-0 group-hover:-translate-x-3 group-hover:opacity-100 transition-all duration-300 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-3 py-1 rounded whitespace-nowrap text-xs z-10">
-                Welcome
+                Back to top
               </span>
               <button
                 aria-label="Back to top"

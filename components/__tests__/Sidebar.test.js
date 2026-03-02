@@ -10,10 +10,10 @@ jest.mock('next/router', () => ({
 }))
 
 describe('Sidebar – tooltip popups', () => {
-  it('renders tooltip span only for the welcome icon on the home page', () => {
+  it('renders tooltip span only for the Back to top icon on the home page', () => {
     render(<Sidebar />)
 
-    expect(screen.getAllByText('Welcome').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Back to top').length).toBeGreaterThan(0)
     // toolkit/connect no longer appear on home
     expect(screen.queryByText('Toolkit')).not.toBeInTheDocument()
     expect(screen.queryByText('Connect')).not.toBeInTheDocument()
@@ -32,7 +32,7 @@ describe('Sidebar – tooltip popups', () => {
     const homeWrapper = screen.getByLabelText('Back to top').closest('div')
     expect(homeWrapper).toBeInTheDocument()
 
-    const tooltip = within(homeWrapper).getByText('Welcome')
+    const tooltip = within(homeWrapper).getByText('Back to top')
     // CSS handles hover state; the element should start hidden
     expect(tooltip).toHaveClass('opacity-0')
   })
