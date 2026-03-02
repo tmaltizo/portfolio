@@ -20,9 +20,11 @@
   - Demonstrated to users independently
 -->
 
-### User Story 1 - Site navigation bar (Priority: P1)
+### User Story 1 - Site navigation bar and utility sidebar (Priority: P1)
 
-As a visitor, I need a consistent navigation bar visible on every page so I can move quickly between the home page and any other section of the site.
+As a visitor, I need a consistent navigation component visible on every page so I can move quickly between the home page and any other section of the site. The control area should also allow me to toggle light/dark mode regardless of which page I'm on.
+
+The navigation is implemented as a horizontal bar at the top along with a persistent right‑side utility sidebar that contains the theme toggle and, on the home page, icons for scrolling to major in‑page sections. On other pages the sidebar shows a "back to top" button (smooth scrolling) and may be extended with additional icons.
 
 **Why this priority**: Navigation is fundamental; without it users cannot reach the new endpoints or discover content, making the rest of the feature useless.
 
@@ -35,9 +37,9 @@ As a visitor, I need a consistent navigation bar visible on every page so I can 
 
 ---
 
-### User Story 2 - Create initial content pages (Priority: P2)
+### User Story 2 - Create initial and reorganised content pages (Priority: P2)
 
-As a visitor, I want to arrive at meaningful content when I select a navigation link so I can learn about the site owner, read posts, or browse projects.
+As a visitor, I want to arrive at meaningful content when I select a navigation link so I can learn about the site owner, read posts, or browse projects. Initially the "About" content lived on the home page; to avoid duplication we will migrate it to its own `/about` page and remove it from the home page.
 
 **Why this priority**: The new endpoints are required for the navigation bar to resolve somewhere; blank or missing pages would frustrate visitors.
 
@@ -85,6 +87,13 @@ As the site owner, I want the new pages and navigation component to be built so 
 - **FR-001**: The application MUST render a navigation bar component at the top of every page that includes links to Home, About, Writing, and Projects.
 - **FR-002**: Each link in the navigation bar MUST update the browser URL and load the corresponding page when clicked.
 - **FR-003**: The navigation bar MUST indicate the active page (e.g. via bold text or underline) so users know their current location.
+- **FR-009**: The right‑side utility sidebar MUST include a dark/light mode toggle that affects every page and preserve state while browsing.
+- **FR-010**: On the home page the utility sidebar MUST provide smooth-scrolling icons for each section; the "home" icon MUST scroll to the absolute top (zero) so the top navigation bar is not obscured. Section links must compensate for the fixed nav-bar height with an offset.
+- **FR-011**: On non-home pages the utility sidebar MUST display a "back to top" button that uses the same smooth intensity/easing as the home-page scroll.
+- **FR-013**: Each sidebar icon MUST display a tooltip label with the icon's function when the user hovers over it, positioned to the left of the icon and initially invisible.
+- **FR-014**: Sidebar icon tooltips MUST animate smoothly into view (fade in and slide out from the icon) over 300ms when the user hovers; the animation MUST NOT cause the tooltip to overlap the icon itself.
+- **FR-015**: The hover activation area for sidebar icons MUST be larger than the visual icon (via padding) to improve ease of interaction on normal and small viewports.
+- **FR-012**: All navigation components MUST use the site's pastel color palette (as defined in tailwind.config.js) to ensure visual consistency with existing pages.
 - **FR-004**: The `/about`, `/writing`, and `/projects` routes MUST exist and return a valid HTML page with a semantic heading.
 - **FR-005**: The navigation bar component MUST accept a data structure (array or object) defining links so new pages can be added by editing data alone.
 - **FR-006**: The layout containing the navigation bar and page body MUST be responsive across viewport sizes from 320px to 2560px.
@@ -98,8 +107,9 @@ As the site owner, I want the new pages and navigation component to be built so 
 
 ### Key Entities *(include if feature involves data)*
 
-- **NavLink**: Represents a single entry in the navigation bar with attributes `label` (display text) and `href` (URL path). The component may also compute an `active` boolean based on current route.
-
+- **NavLink**: Represents a single entry in the navigation bar with attributes `label` (display text) and `href` (URL path). The component may also compute an `active` boolean based on current route. The underlying data is exported from `components/navLinks.js` and can be extended without editing layout code.
+- **DarkModeContext**: A React context that holds `isDark` and `toggleDark`. Provided at the app root (`_app.js`) so all pages and the sidebar can consume it.
+- **SidebarLink**: Utility icon used in the right sidebar; may be either a `react-scroll` scroll target (home page sections) or a normal Next.js `Link` for page navigation. Can also be a simple button (back-to-top). Each sidebar link includes a descriptive `title` attribute, which appears as a smooth-animated tooltip label positioned to the left of the icon on hover. The tooltip fades in and slides outward over 300ms without overlapping the icon. The interactive hit zone around each icon is expanded via padding to improve ease of interaction.
 ## Success Criteria *(mandatory)*
 
 <!--
@@ -113,4 +123,6 @@ As the site owner, I want the new pages and navigation component to be built so 
 - **SC-002**: Users are able to reach the home, about, writing, and projects pages within two clicks from any starting page.
 - **SC-003**: On mobile viewports (320–480px wide) the navigation links remain readable and tappable; no horizontal scrollbar appears.
 - **SC-004**: A developer can add a new nav entry and page in fewer than five minutes, demonstrating the extensibility requirement.
+- **SC-005**: All sidebar icon tooltips display consistently when hovering over the icon area; tooltips appear within 300ms and do not visibly overlap the icon.
+- **SC-006**: Users can trigger sidebar icon tooltips by hovering within a 32px (approximately) radius of the icon center, confirming the expanded hit target improves usability.
 
