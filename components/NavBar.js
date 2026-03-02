@@ -20,7 +20,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="flex space-x-6 bg-gray-100 p-4 shadow-sm"
+      className="flex space-x-6 bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border px-6 py-3 shadow-sm"
       aria-label="Main navigation"
     >
       {navLinks.map(({ label, href }) => {
@@ -29,9 +29,14 @@ export default function NavBar() {
           <Link
             key={href}
             href={href}
-            className={`text-gray-700 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
-              isActive ? 'font-semibold' : ''
-            }`}
+            className={`text-sm transition-colors duration-150
+              text-light-text dark:text-dark-text
+              hover:text-light-accent dark:hover:text-dark-accent
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-accent dark:focus-visible:ring-dark-accent
+              ${isActive
+                ? 'font-semibold text-light-accent dark:text-dark-accent underline underline-offset-4'
+                : ''
+              }`}
             aria-current={isActive ? 'page' : undefined}
           >
             {label}
