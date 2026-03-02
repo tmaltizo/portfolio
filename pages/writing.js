@@ -14,10 +14,8 @@ export default function WritingPage() {
         <span className="text-light-accent dark:text-dark-accent">Writing</span>
       </h1>
       <p className="mt-6 text-lg md:text-xl leading-relaxed max-w-2xl">
-        This section is intended to host blog posts, articles, or any
-        written content you want to share. For now the text is a placeholder
-        to keep the automated test happy and confirm that explanatory content
-        exists below the heading.
+        This section hosts my variously categorized blog posts, articles, or any
+        written content I want to share. Feel free to explor this page to check out my latest thoughts and insights on software development, technology trends, or any other topics I find interesting. Stay tuned for regular updates and new content!
       </p>
     </main>
   )
