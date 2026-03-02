@@ -33,8 +33,14 @@ import { useDarkMode } from '@/contexts/DarkModeContext'
 /** Offset (px) to clear the fixed NavBar when scrolling to a section anchor. */
 const NAV_OFFSET = -52
 
-/** Scroll-section definitions used on the home page only (excludes the top/home icon). */
-const HOME_SECTION_LINKS = [
+/** Scroll-section definitions used on the home page only (excludes the top/home icon).
+ *
+ * Toolkit and Connect were moved to the About page; the home sidebar therefore
+ * only needs the top icon now. */
+const HOME_SECTION_LINKS = []
+
+// when on the about page we still want the toolkit/connect shortcuts
+const ABOUT_SECTION_LINKS = [
   { to: 'toolkit', icon: <TbBrandReact />,           title: 'Toolkit' },
   { to: 'connect', icon: <AiOutlineMail />,          title: 'Connect' },
 ]
@@ -46,6 +52,7 @@ export default function Sidebar({ extraLinks = [] }) {
   const { isDark, toggleDark } = useDarkMode()
   const { pathname } = useRouter()
   const isHome = pathname === '/'
+  const isAbout = pathname === '/about'
 
   return (
     <nav
@@ -70,8 +77,8 @@ export default function Sidebar({ extraLinks = [] }) {
 
       {/* Centre-aligned icon links */}
       <div className="mt-auto mb-auto flex flex-col items-center space-y-0">
-        {isHome ? (
-          /* Home page: top icon scrolls to absolute top; rest scroll to sections */
+        {isHome || isAbout ? (
+          /* Home page: top icon scrolls to absolute top; about page: same plus extra links */
           <>
             <div className="relative group h-10 flex items-center justify-center">
               <span className="absolute right-full top-1/2 -translate-y-1/2 translate-x-0 opacity-0 group-hover:-translate-x-3 group-hover:opacity-100 transition-all duration-300 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-3 py-1 rounded whitespace-nowrap text-xs z-10">
@@ -85,7 +92,8 @@ export default function Sidebar({ extraLinks = [] }) {
                 <AiOutlineHome />
               </button>
             </div>
-            {HOME_SECTION_LINKS.map(({ to, icon, title }) => (
+            {/* show section links on home and on about */}
+            {(isHome ? HOME_SECTION_LINKS : ABOUT_SECTION_LINKS).map(({ to, icon, title }) => (
               <div key={to} className="relative group h-10 flex items-center justify-center">
                 <span className="absolute right-full top-1/2 -translate-y-1/2 translate-x-0 opacity-0 group-hover:-translate-x-3 group-hover:opacity-100 transition-all duration-300 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-3 py-1 rounded whitespace-nowrap text-xs z-10">
                   {title}

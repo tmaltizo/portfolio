@@ -10,13 +10,13 @@ jest.mock('next/router', () => ({
 }))
 
 describe('Sidebar – tooltip popups', () => {
-  it('renders tooltip spans for every icon on the home page', () => {
+  it('renders tooltip span only for the welcome icon on the home page', () => {
     render(<Sidebar />)
 
-    // check that the tooltip text nodes are in the document (allow duplicates)
     expect(screen.getAllByText('Welcome').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Toolkit').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Connect').length).toBeGreaterThan(0)
+    // toolkit/connect no longer appear on home
+    expect(screen.queryByText('Toolkit')).not.toBeInTheDocument()
+    expect(screen.queryByText('Connect')).not.toBeInTheDocument()
   })
 
   it('places the dark-mode toggle near the top edge (mt-1)', () => {
@@ -37,14 +37,14 @@ describe('Sidebar – tooltip popups', () => {
     expect(tooltip).toHaveClass('opacity-0')
   })
 
-  it('includes any extraLinks and renders tooltips for them on non-home pages', () => {
+  it('includes any extraLinks and renders tooltips for them on non-home/non-about pages', () => {
     const extras = [
       { icon: <span>X</span>, href: '/foo', title: 'Foo' },
     ]
     const { useRouter } = require('next/router')
-    useRouter.mockReturnValue({ pathname: '/about' })
+    useRouter.mockReturnValue({ pathname: '/projects' })
     render(<Sidebar extraLinks={extras} />)
-    // there may be multiple matches (tooltip + sr-only); at least one should exist
+    // extras should render via the "other pages" branch
     expect(screen.getAllByText('Foo').length).toBeGreaterThan(0)
   })
 })
