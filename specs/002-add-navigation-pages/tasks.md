@@ -13,7 +13,7 @@ description: "Task list for navigation bar and new pages feature"
 
 - [x] T001 Ensure you are on branch `002-add-navigation-pages` and up to date with origin (no file path)
 - [x] T002 [P] Install project dependencies (`npm install` in workspace root)
-- [ ] T003 [P] Create `components/navLinks.js` exporting the initial link array
+- [x] T003 [P] Create `components/navLinks.js` exporting the initial link array
 
 ---
 
@@ -21,9 +21,9 @@ description: "Task list for navigation bar and new pages feature"
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Create `components/NavBar.js` component that imports `navLinks.js` and renders links in a `<nav>` element
-- [ ] T005 Modify `pages/_app.js` to wrap `<Component {...pageProps} />` with the new `NavBar` (shared layout)
-- [ ] T006 [P] Add Tailwind classes and focus styles to `NavBar.js` for basic horizontal layout and accessibility
+- [x] T004 Create `components/NavBar.js` component that imports `navLinks.js` and renders links in a `<nav>` element
+- [x] T005 Modify `pages/_app.js` to wrap `<Component {...pageProps} />` with the new `NavBar` (shared layout)
+- [x] T006 [P] Add Tailwind classes and focus styles to `NavBar.js` for basic horizontal layout and accessibility
 - [x] T007 Add unit test file `components/__tests__/NavBar.test.js` with a placeholder render test (install jest if needed)
 
 ---
@@ -36,8 +36,8 @@ description: "Task list for navigation bar and new pages feature"
 
 ### Implementation for User Story 1
 
-- [ ] T008 [P] Update `components/NavBar.js` to mark the active link using `useRouter()`
-- [ ] T009 [US1] Add focus and hover states via Tailwind in `NavBar.js` for accessibility
+- [x] T008 [P] Update `components/NavBar.js` to mark the active link using `useRouter()`
+- [x] T009 [US1] Add focus and hover states via Tailwind in `NavBar.js` for accessibility
 - [x] T010 [US1] Write integration test `components/__tests__/NavBar.integration.test.js` verifying link rendering and active state
 
 **Checkpoint**: Navigation bar should be fully functional and testable independently
@@ -50,11 +50,11 @@ description: "Task list for navigation bar and new pages feature"
 
 **Independent Test**: Visiting each route shows correct heading and default text
 
-- [ ] T011 [P] Create `pages/about.js` with `<h1>About</h1>` and descriptive paragraph
-- [ ] T012 [P] Create `pages/writing.js` with `<h1>Writing</h1>` and explanatory paragraph
-- [ ] T013 [P] Create `pages/projects.js` with `<h1>Projects</h1>` and placeholder area
+- [x] T011 [P] Create `pages/about.js` with `<h1>About</h1>` and descriptive paragraph
+- [x] T012 [P] Create `pages/writing.js` with `<h1>Writing</h1>` and explanatory paragraph
+- [x] T013 [P] Create `pages/projects.js` with `<h1>Projects</h1>` and placeholder area
 - [x] T014 [US2] Add simple tests in `pages/__tests__/about.test.js`, `writing.test.js`, `projects.test.js` to assert heading presence
-- [ ] T015 [US2] Manually verify nav links navigate to new pages and active state updates
+- [x] T015 [US2] Manually verify nav links navigate to new pages and active state updates
 
 **Checkpoint**: Routes `/about`, `/writing`, `/projects` live and styled
 
@@ -66,8 +66,8 @@ description: "Task list for navigation bar and new pages feature"
 
 **Independent Test**: Adding a new entry to `navLinks.js` and a page file makes the link appear automatically
 
-- [ ] T016 [US3] Refactor `navLinks.js` data to export default array and ensure `NavBar.js` iterates over it
-- [ ] T017 [US3] Document extension procedure in `quickstart.md` (add entry + create page)
+- [x] T016 [US3] Refactor `navLinks.js` data to export default array and ensure `NavBar.js` iterates over it
+- [x] T017 [US3] Document extension procedure in `quickstart.md` (add entry + create page)
 - [x] T018 [US3] Add test `components/__tests__/NavBar.data.test.js` confirming that modifying the exported array affects rendering (mock import)
 
 **Checkpoint**: Developer can add pages by editing data only
