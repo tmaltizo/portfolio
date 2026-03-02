@@ -116,6 +116,13 @@ deployments.
 
 1. **Branch per change**: Every non-trivial change MUST be developed on
    a feature branch named `###-short-description`.
+   - Before creating or naming a branch, invoke the helper script
+     `.specify/scripts/powershell/create-new-feature.ps1`; it inspects
+     existing remote/local branches and `specs/` directories and will
+     select the next available numeric prefix. Never hardcode a number
+     manually in the branch or spec path; if a conflict arises, restart
+     the feature creation process and allow the script to choose a new
+     number.
 2. **Spec before code**: Features touching more than one file SHOULD
    have a spec in `specs/` before implementation begins.
 3. **Pre-merge checklist**:
