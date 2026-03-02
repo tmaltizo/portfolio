@@ -1,3 +1,12 @@
+/**
+ * Writing page – accessible at /writing.
+ *
+ * Intended to host blog posts, articles, or other written content.
+ * Replace the placeholder paragraph with an article list, MDX content,
+ * or any other component once ready.
+ *
+ * @returns {JSX.Element} The Writing page layout.
+ */
 export default function WritingPage() {
   return (
     <main className="p-8">
