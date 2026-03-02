@@ -54,7 +54,8 @@ export default function Sidebar({ extraLinks = [] }) {
                  bg-light-bg bg-opacity-40 dark:bg-dark-bg dark:bg-opacity-40 backdrop-blur z-50"
     >
       {/* Dark-mode toggle – always visible */}
-      <div className="relative group mt-2">
+      {/* move closer to the very top so it no longer sits on top of the nav border */}
+      <div className="relative group mt-1">
         <span className="absolute right-full top-1/2 -translate-y-1/2 translate-x-0 opacity-0 group-hover:-translate-x-3 group-hover:opacity-100 transition-all duration-300 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-3 py-1 rounded whitespace-nowrap text-xs z-10">
           {isDark ? 'Light mode' : 'Dark mode'}
         </span>

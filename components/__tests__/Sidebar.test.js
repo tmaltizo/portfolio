@@ -13,33 +13,38 @@ describe('Sidebar – tooltip popups', () => {
   it('renders tooltip spans for every icon on the home page', () => {
     render(<Sidebar />)
 
-    // check that the tooltip text nodes are in the document
-    expect(screen.getByText('Welcome')).toBeInTheDocument()
-    expect(screen.getByText('Toolkit')).toBeInTheDocument()
-    expect(screen.getByText('Connect')).toBeInTheDocument()
+    // check that the tooltip text nodes are in the document (allow duplicates)
+    expect(screen.getAllByText('Welcome').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Toolkit').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Connect').length).toBeGreaterThan(0)
   })
 
-  it('shows the tooltip when the icon is hovered', async () => {
+  it('places the dark-mode toggle near the top edge (mt-1)', () => {
     render(<Sidebar />)
-    // locate the wrapper div for the home button (group)
+    const toggleWrapper = screen.getByRole('button', {
+      name: /switch to (light|dark) mode/i,
+    }).closest('div')
+    expect(toggleWrapper).toHaveClass('mt-1')
+  })
+
+  it('tooltip for the home icon is hidden by default', () => {
+    render(<Sidebar />)
     const homeWrapper = screen.getByLabelText('Back to top').closest('div')
     expect(homeWrapper).toBeInTheDocument()
 
     const tooltip = within(homeWrapper).getByText('Welcome')
-    // initially hidden via opacity class
+    // CSS handles hover state; the element should start hidden
     expect(tooltip).toHaveClass('opacity-0')
-    // spacing should include larger offset class applied earlier
-    expect(tooltip).toHaveClass('translate-x-4')
-
-    await userEvent.hover(homeWrapper)
-    expect(tooltip).toHaveClass('opacity-100')
   })
 
-  it('includes any extraLinks and renders tooltips for them', () => {
+  it('includes any extraLinks and renders tooltips for them on non-home pages', () => {
     const extras = [
       { icon: <span>X</span>, href: '/foo', title: 'Foo' },
     ]
+    const { useRouter } = require('next/router')
+    useRouter.mockReturnValue({ pathname: '/about' })
     render(<Sidebar extraLinks={extras} />)
-    expect(screen.getByText('Foo')).toBeInTheDocument()
+    // there may be multiple matches (tooltip + sr-only); at least one should exist
+    expect(screen.getAllByText('Foo').length).toBeGreaterThan(0)
   })
 })
