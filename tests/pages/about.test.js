@@ -37,6 +37,11 @@ describe('About page', () => {
     // sections should have ids for anchors
     expect(document.getElementById('toolkit')).toBeInTheDocument()
     expect(document.getElementById('connect')).toBeInTheDocument()
+
+    // the toolkit icon list should allow expansion on large screens
+    const toolkitList = screen.getByRole('list', { hidden: true })
+    expect(toolkitList).toHaveClass('max-w-3xl')
+    expect(toolkitList).toHaveClass('lg:max-w-none')
   })
 
   it('renders the contact form', () => {

@@ -64,19 +64,21 @@ export default function WritingPage({ posts = [], tags = [] }) {
 
   return (
     <main className="bg-light-bg dark:bg-dark-bg min-h-screen px-6 pr-14 sm:pr-20 md:px-10 md:pr-20 py-12 text-light-text dark:text-dark-text">
-      <h1 className="text-3xl md:text-4xl font-medium text-light-text-dark dark:text-dark-text mb-2">
-        <span className="text-light-accent dark:text-dark-accent">Writing</span>
-      </h1>
+      <div className="mx-auto max-w-3xl text-left">
+        <h1 className="text-3xl md:text-4xl font-medium text-light-text-dark dark:text-dark-text mb-2">
+          <span className="text-light-accent dark:text-dark-accent">Writing</span>
+        </h1>
 
-      <p className="text-sm md:text-base text-light-text dark:text-dark-text mb-8 max-w-lg">
-        Blog posts, articles, and anything else I want to share.
-      </p>
+        <p className="text-sm md:text-base text-light-text dark:text-dark-text mb-8 max-w-lg">
+          Blog posts, articles, and anything else I want to share.
+        </p>
 
-      {tags.length > 0 && (
-        <div className="mb-10">
-          <TagFilter tags={tags} activeTag={activeTag} onSelect={setActiveTag} />
-        </div>
-      )}
+        {tags.length > 0 && (
+          <div className="mb-10">
+            <TagFilter tags={tags} activeTag={activeTag} onSelect={setActiveTag} />
+          </div>
+        )}
+      </div>
 
       {filteredPosts.length === 0 ? (
         <p className="text-light-text dark:text-dark-text mt-12 text-center">

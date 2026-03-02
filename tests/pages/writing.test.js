@@ -42,9 +42,14 @@ const mockPosts = [...mockPosts2026, ...mockPosts2025]
 const mockTags = ['Credit Cards', 'Finance', 'Tech']
 
 describe('Writing page', () => {
-  it('renders an <h1> element containing "Writing"', () => {
-    render(<WritingPage posts={mockPosts} tags={mockTags} />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/writing/i)
+  it('renders an <h1> element containing "Writing" inside a constrained left-aligned container', () => {
+    const { container } = render(<WritingPage posts={mockPosts} tags={mockTags} />)
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toHaveTextContent(/writing/i)
+    // ensure the heading lives inside an element that constrains width and left-aligns text
+    const wrapper = heading.closest('div')
+    expect(wrapper).toHaveClass('max-w-3xl')
+    expect(wrapper).toHaveClass('text-left')
   })
 
   it('renders year-group headings for each distinct year', () => {

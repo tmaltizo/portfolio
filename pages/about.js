@@ -57,7 +57,7 @@ export default function AboutPage() {
       <section id="toolkit" className="text-center pr-10 pl-10">
         <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-6">My <span className="text-light-accent dark:text-dark-accent">Toolkit</span> 🛠️</h2>
         <div className="text-4xl sm:text-6xl py-3 text-light-accent dark:text-dark-accent m-4 sm:m-10">
-          <ul className="grid grid-cols-3 sm:flex flex-wrap items-center justify-around w-full max-w-3xl mx-auto gap-3 sm:gap-6">
+          <ul className="grid grid-cols-3 sm:flex flex-wrap items-center justify-around w-full max-w-3xl lg:max-w-none mx-auto gap-3 sm:gap-6">
             <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><FaReact /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">React</div></li>
             <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandHtml5 /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">HTML</div></li>
             <li className="flex flex-col items-center min-w-0"><span className="text-3xl sm:text-6xl"><TbBrandCss3 /></span><div className="text-xs sm:text-3xl my-1 leading-tight text-center break-normal w-full">CSS</div></li>
