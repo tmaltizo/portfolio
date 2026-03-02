@@ -78,10 +78,10 @@ description: "Task list for navigation bar and new pages feature"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T019 [P] Update README or site README with navigation usage instructions
+- [x] T019 [P] Update README or site README with navigation usage instructions
 - [ ] T020 [P] Run Lighthouse audit on home page and fix any performance or accessibility warnings related to nav
-- [ ] T021 [P] Cleanup unused imports and format code with Prettier/eslint
-- [ ] T022 [P] Ensure new components have JSDoc comments if using TypeScript
+- [x] T021 [P] Cleanup unused imports and format code with Prettier/eslint
+- [x] T022 [P] Ensure new components have JSDoc comments if using TypeScript
 - [ ] T023 [P] Merge and rebase onto latest `main` to prepare for pull request
 
 ---
