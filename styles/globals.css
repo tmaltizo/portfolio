@@ -31,4 +31,13 @@ body {
     @apply px-4;
     @apply cursor-pointer;
   }
+
+  /* ensure overscroll/backdrop matches body colors in light & dark modes */
+  html {
+    @apply bg-light-bg;
+  }
+  /* dark mode class lives on the html element itself now */
+  html.dark {
+    @apply bg-dark-bg;
+  }
 }
