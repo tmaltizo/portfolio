@@ -32,15 +32,16 @@ import { SiTerraform } from "react-icons/si";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-scroll";
+import { useDarkMode } from '@/contexts/DarkModeContext'
 import portrait from "public/portrait.jpg";
 import realportrait from "public/realportrait.jpg";
 import Contact from 'components/Contact.js'
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { isDark: darkMode, toggleDark } = useDarkMode()
 
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div>
       <Head>
         <title>trizothethird&apos;s Portfolio</title>
         <meta name="description" content="Tristan Maltizo&apos;s personal portfolio and digital garden" />
@@ -65,7 +66,7 @@ export default function Home() {
             {/* toggle at top */}
             <button
               aria-label="toggle dark mode"
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDark}
               className="mt-2 text-lg sm:text-xl text-light-accent dark:text-dark-accent hover:scale-110 transition"
             >
               <BsFillMoonStarsFill />
