@@ -33,10 +33,10 @@ export default function SpendCalculator({ initialMonthly = 2000 }) {
   }, [monthlySpend])
 
   return (
-    <div className="rounded-2xl border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg p-6 shadow-sm">
+    <div className="rounded-2xl border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg p-6 shadow-sm text-light-text dark:text-dark-text">
       <div className="flex items-center justify-between gap-4 mb-4">
         <div>
-          <p className="text-sm text-light-text dark:text-dark-text-low">Monthly spend</p>
+          <p className="text-sm text-light-text dark:text-dark-text">Monthly spend</p>
           <input
             type="range"
             min="0"
@@ -44,31 +44,31 @@ export default function SpendCalculator({ initialMonthly = 2000 }) {
             step="100"
             value={monthlySpend}
             onChange={(event) => setMonthlySpend(Number(event.target.value))}
-            className="w-full"
+            className="w-full accent-light-accent dark:accent-dark-accent"
           />
         </div>
-        <p className="text-lg font-semibold text-light-text-dark dark:text-dark-text">${monthlySpend.toLocaleString()}</p>
+        <p className="text-lg font-semibold text-light-accent dark:text-dark-accent">${monthlySpend.toLocaleString()}</p>
       </div>
       <div className="grid grid-cols-2 gap-4 text-sm">
         <div className="rounded-lg bg-light-accent/10 dark:bg-dark-accent/10 p-3">
-          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text-low">Annual spend</p>
-          <p className="text-lg font-semibold text-light-text-dark dark:text-dark-text">${values.annual.toLocaleString()}</p>
+          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text">Annual spend</p>
+          <p className="text-lg font-semibold text-light-accent dark:text-dark-accent">${values.annual.toLocaleString()}</p>
         </div>
         <div className="rounded-lg bg-light-accent/10 dark:bg-dark-accent/10 p-3">
-          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text-low">Gold rewards</p>
-          <p className="text-lg font-semibold text-light-accent dark:text-light-bg">${values.gold.toLocaleString()}</p>
+          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text">Gold rewards</p>
+          <p className="text-lg font-semibold text-light-accent dark:text-dark-accent">${values.gold.toLocaleString()}</p>
         </div>
         <div className="rounded-lg bg-light-accent/10 dark:bg-dark-accent/10 p-3">
-          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text-low">Vs. 2% card</p>
-          <p className="text-lg font-semibold text-light-accent dark:text-light-bg">+${values.netVsTwo.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text">Vs. 2% card</p>
+          <p className="text-lg font-semibold text-light-accent dark:text-dark-accent">+${values.netVsTwo.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
         </div>
         <div className="rounded-lg bg-light-accent/10 dark:bg-dark-accent/10 p-3">
-          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text-low">Vs. 1.5% card</p>
-          <p className="text-lg font-semibold text-light-accent dark:text-light-bg">+${values.netVsFifteen.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+          <p className="text-xs uppercase tracking-wide text-light-text dark:text-dark-text">Vs. 1.5% card</p>
+          <p className="text-lg font-semibold text-light-accent dark:text-dark-accent">+${values.netVsFifteen.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
         </div>
       </div>
       <p className="text-xs leading-relaxed text-light-text dark:text-dark-text mt-4">
-        You only need ${values.breakEvenPoint.toLocaleString()} in annual spend to cover the $50 Gold fee at 3%. Every dollar above that is pure reward money.
+        You only need ${values.breakEvenPoint.toLocaleString()} in annual spend if you are using it to cover the $50 Gold fee at 3%. Every dollar above that is pure reward money.
       </p>
     </div>
   )

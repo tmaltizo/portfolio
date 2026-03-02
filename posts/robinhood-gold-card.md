@@ -54,33 +54,73 @@ By simply utilizing the interest-free margin provided, the 3% cashback on the ca
 
 **However, if you do enable margin investing, you no longer get 3.35 APY on uninvested cash - so be sure to move funds to SGOV or USFR immediately after transferring.**
 
-## Quantifying the advantage
+## IRA Transfers & Roth Stacking
 
-| Annual spend | Gold 3% rewards | Flat 2% card | Net benefit vs. 2% | Notes |
-|-------------:|---------------:|-------------:|------------------:|-------|
-| $12,000      | $360           | $240         | +$120             | Net benefit ($120) covers 2+ years of the subscription |
-| $24,000      | $720           | $480         | +$240             | Net benefit covers nearly 5 years of Gold at $50/year |
-| $36,000      | $1,080         | $720         | +$360             | $50 fee is ~4% of the delta—easy ROI |
+The match is straightforward but carries a cap: Robinhood gives **3% on whatever you deposit into an IRA, up to the annual limit ($7,500 in 2026)**. That includes your own dollars *and* any cashback you send in, so the total can’t exceed $7,500 for matching purposes.
 
-The math is simple: once you cross the ~$1,700 annual mark (roughly $140/month), Robinhood Gold is already outperforming the majority of flat-rate cards, and every additional dollar is pure cashback with no category tracking or calendar juggling. See this interactive calculator to statistically compare rewards:
+- Add $7,500 of cash → get $225 bonus.
+- You can drop your Gold rewards in your IRA to speed up this process (still qualifies for the 3% match)
+
+The value of moving rewards is that they help you hit the limit sooner; In other words, funneling cashback into the IRA is useful because it lets you contribute more than you otherwise would.
+
+## Quantifying the advantage against 2% cards
+
+| Annual spend | Gold 3% rewards | Flat 2% card | Net benefit vs. 2% |
+|-------------:|---------------:|-------------:|------------------:|
+| $5,000       | $150           | $100         | +$50              |
+| $12,000      | $360           | $240         | +$120             |
+| $24,000      | $720           | $480         | +$240             |
+| $36,000      | $1,080         | $720         | +$360             |
+
+The math is simple: once you cross the $5,000 annual spend mark (roughly $420/month), Robinhood Gold outperforms the majority of flat-rate cards after subtracting the annual fee. If you add IRA transfer matches and investing your free margin into Bond ETFs like SGOV or USFR, the annual fee is easily offset. 
 
 <SpendCalculator initialMonthly={2000} />
 
 ## Things to Watch Out For
 
-A few things worth knowing before you sign up:
-
-1. **Cashback is in brokerage cash, not a statement credit.** If you want to use rewards to pay your bill, you'll need to manually move the funds.
-2. **No traditional signup bonus.** Many competing cards offer large welcome bonuses that can be worth hundreds of dollars in the first year.
-3. **Customer support is app‑based only.** There's no phone support. For a credit card, that might matter if you have a dispute.
-4. **Newer issuer.** Coastal Community Bank and Robinhood's credit card program are relatively new compared to legacy card issuers.
-5. **Waitlist and approval friction.** Even for Gold members, the waitlist can take 3–6 months (or longer) with seemingly random invite orders. Approval is also surprisingly strict; reports suggest the issuer is highly sensitive to debt-to-income ratios and recent credit inquiries, leading to denials even for those with 800+ credit scores.
-6. **Cash-like exclusions and "Fair Use".** You won't earn 3% (or anything) on gambling, money orders, or peer-to-peer transfers (like Venmo/CashApp). While high-cost items like **taxes** and **rent** (via portals like Plastiq) *technically* earn 3%, be aware that merchant fees often eat most of that margin or will just not be covered at all.
-7. **Value proposition risk.** The 3% flat rate is a "loss leader" in the credit card world (most interchange fees are closer to 2%). Robinhood could "nerf" the value proposition by introducing monthly spend caps, increasing the Gold subscription fee, or reducing the base cashback rate if the program becomes unsustainable.
+<table class="w-full border-collapse text-left">
+  <tbody>
+    <tr class="bg-light-bg dark:bg-dark-bg">
+      <td class="py-2 px-3 align-top">
+        <strong>Cashback is in brokerage cash, not a statement credit.</strong> If you want to use rewards to pay your bill, you'll need to manually move the funds.
+      </td>
+    </tr>
+    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td class="py-2 px-3 align-top">
+        <strong>No traditional signup bonus.</strong> Many competing cards offer large welcome bonuses that can be worth hundreds of dollars in the first year.
+      </td>
+    </tr>
+    <tr class="bg-light-bg dark:bg-dark-bg">
+      <td class="py-2 px-3 align-top">
+        <strong>Customer support is app‑based only.</strong> There's no phone support. For a credit card, that might matter if you have a dispute.
+      </td>
+    </tr>
+    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td class="py-2 px-3 align-top">
+        <strong>Newer issuer.</strong> Coastal Community Bank and Robinhood's credit card program are relatively new compared to legacy card issuers.
+      </td>
+    </tr>
+    <tr class="bg-light-bg dark:bg-dark-bg">
+      <td class="py-2 px-3 align-top">
+        <strong>Waitlist and approval friction.</strong> Even for Gold members, the waitlist can take 3–6 months (or longer) with seemingly random invite orders. Approval is also surprisingly strict; reports suggest the issuer is highly sensitive to debt-to-income ratios and recent credit inquiries, leading to denials even for those with 800+ credit scores.
+      </td>
+    </tr>
+    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td class="py-2 px-3 align-top">
+        <strong>Cash-like exclusions and "Fair Use".</strong> You won't earn 3% (or anything) on gambling, money orders, or peer-to-peer transfers (like Venmo/CashApp). While high-cost items like <strong>taxes</strong> and <strong>rent</strong> (via portals like Plastiq) *technically* earn 3%, be aware that merchant fees often eat most of that margin or will just not be covered at all.
+      </td>
+    </tr>
+    <tr class="bg-light-bg dark:bg-dark-bg">
+      <td class="py-2 px-3 align-top">
+        <strong>Value proposition risk.</strong> The 3% flat rate is a "loss leader" in the credit card world (most interchange fees are closer to 2%). Robinhood could "nerf" the value proposition by introducing monthly spend caps, increasing the Gold subscription fee, or reducing the base cashback rate if the program becomes unsustainable.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## My Verdict
 
-For someone already using Robinhood — especially for Roth IRA contributions — the Gold Card is a must-have value. The 3% flat rate removes all the mental overhead of optimizing spend across multiple cards.
+For someone already using Robinhood — especially for Roth IRA contributions and utilizing margin — the Gold Card is a must-have card. The 3% flat rate removes all the mental overhead of optimizing spend across multiple cards.
 
 If you're outside the Robinhood ecosystem, you'd need to weigh whether the Gold subscription brings enough standalone value beyond the card. 
 
