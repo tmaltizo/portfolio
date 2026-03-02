@@ -3,9 +3,6 @@ import Head from 'next/head'
 import {
   AiFillLinkedin,
   AiFillGithub,
-  AiOutlineHome,
-  AiOutlineInfoCircle,
-  AiOutlineMail,
 } from "react-icons/ai";
 import {
   FaJava,
@@ -24,22 +21,15 @@ import {
   TbBrandTailwind,
   TbBrandAws,
   TbBrandGithub,
-  TbBrandReact,
   TbSparkles,
   TbChevronRight,
 } from "react-icons/tb";
 import { SiTerraform } from "react-icons/si";
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { useState } from "react";
 import { Link } from "react-scroll";
-import { useDarkMode } from '@/contexts/DarkModeContext'
 import portrait from "public/portrait.jpg";
-import realportrait from "public/realportrait.jpg";
 import Contact from 'components/Contact.js'
 
 export default function Home() {
-  const { isDark: darkMode, toggleDark } = useDarkMode()
-
   return (
     <div>
       <Head>
@@ -61,38 +51,6 @@ export default function Home() {
           </header>
         <div className="min-h-screen 2xl:mx-60">
 
-          {/* minimal icon sidebar */}
-          <nav className="fixed top-0 right-0 h-screen w-10 sm:w-12 flex flex-col items-center p-2 bg-light-bg bg-opacity-40 dark:bg-dark-bg dark:bg-opacity-40 backdrop-blur z-50">
-            {/* toggle at top */}
-            <button
-              aria-label="toggle dark mode"
-              onClick={toggleDark}
-              className="mt-2 text-lg sm:text-xl text-light-accent dark:text-dark-accent hover:scale-110 transition"
-            >
-              <BsFillMoonStarsFill />
-            </button>
-
-            {/* centred icon links */}
-            <div className="mt-auto mb-auto flex flex-col items-center space-y-6">
-              <Link to="home" smooth title="Welcome" className="text-lg sm:text-xl hover:scale-110 transition">
-                <AiOutlineHome />
-                <span className="sr-only">Welcome</span>
-              </Link>
-              <Link to="about" smooth title="About" className="text-lg sm:text-xl hover:scale-110 transition">
-                <AiOutlineInfoCircle />
-                <span className="sr-only">About</span>
-              </Link>
-              <Link to="toolkit" smooth title="Toolkit" className="text-lg sm:text-xl hover:scale-110 transition">
-                <TbBrandReact />
-                <span className="sr-only">Toolkit</span>
-              </Link>
-              <Link to="connect" smooth title="Connect" className="text-lg sm:text-xl hover:scale-110 transition">
-                <AiOutlineMail />
-                <span className="sr-only">Connect</span>
-              </Link>
-            </div>
-          </nav>
-
           <section className="text-center px-10 mt-0 min-h-screen sm:min-h-0 sm:mb-60 flex flex-col justify-center sm:justify-start pb-20 sm:pb-10">
             <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-40 h-40 sm:w-60 sm:h-60 relative overflow-hidden mt-6 sm:mt-40 mb-5">
               <Image src={portrait} alt="Picture of the author" />
@@ -101,14 +59,6 @@ export default function Home() {
             <h3 className="text-lg sm:text-2xl py-2 text-light-text dark:text-dark-text md:text-3xl">A multi-faceted software professional currently working as a Solution Architect at <span className="text-light-accent dark:text-dark-accent">Synchrony</span>!</h3>
           </section>
 
-          {/* about */}
-          <section id="about" className="text-center pb-10 pr-10 pl-10 my-10">
-            <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl my-10">About <span className="text-light-accent dark:text-dark-accent">Me</span> 😎</h2>
-            <div className="mx-auto bg-gradient-to-b from-light-accent rounded-full w-48 h-48 sm:w-60 sm:h-60 relative overflow-hidden mb-5">
-              <Image src={realportrait} alt="Picture of the author" />
-            </div>
-            <p className="text-lg sm:text-2xl py-1 text-light-text dark:text-dark-text md:text-2xl">I graduated from <span className="text-light-text-dark dark:text-dark-text">The University of Illinois at Chicago</span> with a Bachelor of Science in Computer Science. I created this site to serve as my digital garden: here you’ll find a running journal of what I’m learning and building next.</p>
-          </section>
 
           {/* toolkit */}
           <section id="toolkit" className="text-center pb-10 pr-10 pl-10 my-10">
