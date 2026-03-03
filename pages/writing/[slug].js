@@ -71,13 +71,13 @@ export default function PostPage({ post, mdxSource }) {
         <meta name="twitter:image" content={ogImage} />
       </Head>
       <main className="bg-light-bg dark:bg-dark-bg min-h-screen mr-10 sm:mr-12 px-0 sm:px-4 md:px-8 py-4 sm:py-12 overflow-x-hidden">
-        <div className="max-w-3xl mx-auto pl-6 sm:pl-8">
+        <div className="max-w-3xl mx-auto pl-8 sm:pl-8">
         {/* Back link */}
         <Link
           href="/writing"
           className="inline-flex items-center gap-1 text-sm text-light-accent dark:text-dark-accent
             hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-accent
-            dark:focus-visible:ring-dark-accent mb-8"
+            dark:focus-visible:ring-dark-accent mb-4"
         >
           ← Back to Writing
         </Link>
