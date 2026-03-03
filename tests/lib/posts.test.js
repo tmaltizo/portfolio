@@ -36,7 +36,7 @@ describe('getAllPosts', () => {
     const posts = getAllPosts()
     const found = posts.find((p) => p.slug === 'robinhood-gold-card')
     expect(found).toBeDefined()
-    expect(found.title).toBe('Robinhood Gold Card - Objectively the Best')
+    expect(found.title).toBe("Deleting the $50 Fee - An Industry Insider's Take On Robinhood’s 3% Loss-Leader")
     expect(found.tags).toContain('Finance')
   })
 
@@ -53,7 +53,7 @@ describe('getPostBySlug', () => {
     const post = getPostBySlug('robinhood-gold-card')
     expect(post).not.toBeNull()
     expect(post.slug).toBe('robinhood-gold-card')
-    expect(post.title).toBe('Robinhood Gold Card - Objectively the Best')
+    expect(post.title).toBe("Deleting the $50 Fee - An Industry Insider's Take On Robinhood’s 3% Loss-Leader")
     expect(post.content).toBeTruthy()
   })
 

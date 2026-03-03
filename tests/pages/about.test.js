@@ -41,7 +41,8 @@ describe('About page', () => {
     // the toolkit icon list should allow expansion on large screens
     const toolkitList = screen.getByRole('list', { hidden: true })
     expect(toolkitList).toHaveClass('max-w-3xl')
-    expect(toolkitList).toHaveClass('lg:max-w-none')
+    // should no longer expand beyond the content width on large screens
+    expect(toolkitList).not.toHaveClass('lg:max-w-none')
   })
 
   it('renders the contact form', () => {

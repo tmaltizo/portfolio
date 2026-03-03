@@ -43,7 +43,7 @@ export default function Home() {
       </Head>
       <main className="bg-light-bg dark:bg-dark-bg pt-8 px-10 pr-12 sm:pr-20 text-light-text dark:text-dark-text">
           {/* site header */}
-          <header id="home" className="text-center sm:text-left mb-4 w-full">
+          <header id="home" className="text-center sm:text-left mb-0 sm:mb-4 w-full">
             <h1 className="font-mono text-base md:text-lg lg:text-xl">
               trizothethird
             </h1>
@@ -51,7 +51,7 @@ export default function Home() {
         <div className="min-h-screen 2xl:mx-60">
 
           <section className="text-center px-10 mt-0 min-h-screen sm:min-h-0 sm:mb-60 flex flex-col justify-center sm:justify-start pb-20 sm:pb-10">
-            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-40 h-40 sm:w-60 sm:h-60 relative overflow-hidden mt-6 sm:mt-40 mb-5">
+            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-40 h-40 sm:w-60 sm:h-60 relative overflow-hidden mt-0 sm:mt-20 mb-5">
               <Image src={portrait} alt="Picture of the author" />
             </div>
             <h2 className="text-2xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-5xl">Hello! <span className="text-light-accent dark:text-dark-accent">I&apos;m Tristan.</span> 👋</h2>

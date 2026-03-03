@@ -7,7 +7,9 @@ import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { getAllPosts, getPostBySlug } from '../../lib/posts'
-import SpendCalculator from '../../components/SpendCalculator'
+import NetCostCalculator from '../../components/NetCostCalculator'
+import ReaderPoll from '../../components/ReaderPoll'
+import NewsletterCTA from '../../components/NewsletterCTA'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -43,6 +45,12 @@ export default function PostPage({ post, mdxSource }) {
     'Robinhood Gold review',
     'best credit card 2026',
     'flat rate cashback card',
+    'is the Robinhood Gold Card a trap',
+    'Robinhood Gold Card vs Fidelity Visa',
+    'how to offset Robinhood Gold fee with margin',
+    'Robinhood Gold Card worth it',
+    'SGOV margin hack Robinhood',
+    'credit card industry insider',
   ]
     .filter(Boolean)
     .join(', ')
@@ -142,7 +150,7 @@ export default function PostPage({ post, mdxSource }) {
 
         {/* Post body */}
         <article className="prose dark:prose-invert max-w-none">
-          <MDXRemote {...mdxSource} components={{ SpendCalculator }} />
+          <MDXRemote {...mdxSource} components={{ NetCostCalculator, ReaderPoll, NewsletterCTA }} />
         </article>
         </div>
       </main>
@@ -167,9 +175,11 @@ export async function getStaticProps({ params }) {
 
   const { content, ...post } = full
   const { default: remarkGfm } = await import('remark-gfm')
+  const { default: rehypeSlug } = await import('rehype-slug')
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSlug],
     },
   })
 
