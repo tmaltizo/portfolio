@@ -50,8 +50,8 @@ export default function Home() {
           </header>
         <div className="min-h-screen 2xl:mx-60">
 
-          <section className="text-center px-10 mt-0 min-h-screen sm:min-h-0 sm:mb-60 flex flex-col justify-center sm:justify-start pb-20 sm:pb-10">
-            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-40 h-40 sm:w-60 sm:h-60 relative overflow-hidden mt-0 sm:mt-20 mb-5">
+          <section className="text-center px-10 mt-0 min-h-screen sm:min-h-0 sm:mb-60 flex flex-col justify-center sm:justify-start pb-20 sm:pb-10 -translate-y-8 sm:translate-y-0">
+            <div className="animate-bounce mx-auto bg-gradient-to-b from-light-accent rounded-full w-48 h-48 sm:w-60 sm:h-60 relative overflow-hidden mt-0 sm:mt-20 mb-5">
               <Image src={portrait} alt="Picture of the author" />
             </div>
             <h2 className="text-2xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-5xl">Hello! <span className="text-light-accent dark:text-dark-accent">I&apos;m Tristan.</span> 👋</h2>
