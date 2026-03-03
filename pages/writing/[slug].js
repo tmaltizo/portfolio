@@ -70,7 +70,7 @@ export default function PostPage({ post, mdxSource }) {
         <meta name="twitter:description" content={post.description} />
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <main className="bg-light-bg dark:bg-dark-bg min-h-screen py-12">
+      <main className="bg-light-bg dark:bg-dark-bg min-h-screen ml-10 py-12">
         <div className="max-w-2xl mx-auto">
         {/* Back link */}
         <Link
