@@ -70,7 +70,7 @@ The match is straightforward but carries a cap: Robinhood gives **3% on whatever
 
 ## Quantifying the advantage against 2% cards
 
-| Annual spend | Gold 3% rewards | Flat 2% card | Net benefit - annual fee |
+| Annual spend | Gold 3% rewards | Flat 2% card | Net vs 2% card - annual fee |
 |-------------:|---------------:|-------------:|------------------:|
 | $5,000       | $150           | $100         | +$0               |
 | $12,000      | $360           | $240         | +$70              |
