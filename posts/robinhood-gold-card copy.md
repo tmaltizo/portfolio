@@ -3,7 +3,7 @@ title: "Testing Another Copy for Writing Page"
 date: "2026-03-02"
 description: "This is a test page"
 tags:
-  - Credit Cards
+  - Test Tag
 ---
 
 ### This is a test page to test multiple posts
