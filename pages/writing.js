@@ -63,8 +63,8 @@ export default function WritingPage({ posts = [], tags = [] }) {
   const yearGroups = groupByYear(filteredPosts)
 
   return (
-    <main className="bg-light-bg dark:bg-dark-bg min-h-screen px-6 pr-14 sm:pr-20 md:px-10 md:pr-20 py-12 text-light-text dark:text-dark-text">
-      <div className="mx-auto max-w-3xl text-left">
+    <main className="bg-light-bg dark:bg-dark-bg min-h-screen px-0 mr-10 sm:mr-0 sm:px-6 sm:pr-20 md:px-10 md:pr-20 py-4 sm:py-12 text-light-text dark:text-dark-text overflow-x-hidden">
+      <div className="mx-auto max-w-3xl text-left pl-8 sm:pl-0">
         <h1 className="text-3xl md:text-4xl font-medium text-light-text-dark dark:text-dark-text mb-2">
           <span className="text-light-accent dark:text-dark-accent">Writing</span>
         </h1>
@@ -86,7 +86,7 @@ export default function WritingPage({ posts = [], tags = [] }) {
         </p>
       ) : (
         // constrain the grid to prevent cards spilling to the viewport edge on small screens
-        <div className="space-y-14 max-w-3xl mx-auto">
+        <div className="space-y-14 max-w-3xl mx-auto pl-8 sm:pl-0">
           {yearGroups.map(({ year, posts: yearPosts }) => (
             <section key={year} aria-label={`Posts from ${year}`}>
               <h2 className="text-xl font-semibold text-light-text-dark dark:text-dark-text mb-5 border-b border-light-border dark:border-dark-border pb-2">
