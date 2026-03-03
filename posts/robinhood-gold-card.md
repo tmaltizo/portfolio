@@ -1,5 +1,5 @@
 ---
-title: "Robinhood Gold Card - The Best Catch-All Card"
+title: "Robinhood Gold Card - The Best Value Proposition?"
 date: "2026-03-02"
 description: "A quick, no-nonsense look at why Robinhood Gold might just be the best credit card out there."
 tags:
@@ -10,20 +10,20 @@ tags:
 <img
   src="/images/robinhood-gold-card.png"
   alt="Robinhood Gold Card"
-  class="mx-auto mb-6 max-w-md rounded"
+  className="mx-auto mb-6 max-w-md rounded"
 />
 
 ### Why this might be the best card you’ll ever use
 
 I picked up the Robinhood Gold Card last year after seeing people talk about its flat 3% cash back on all purchases. As someone working in the credit card industry, the card's rollout instantly peaked my interest. Here's what I actually think after using it day‑to‑day as my current catch-all credit card.
 
-## What Is the Robinhood Gold Card?
+## But First: What Is the Robinhood Gold Card?
 
 The Robinhood Gold Card is a **Visa** credit card available exclusively to Robinhood Gold subscribers ($5/month or $50/year). The headline feature is **3% unlimited cash back on every purchase** — no rotating categories, no caps, and no annual fee on top of the Gold subscription (which effectively becomes a $50/year card fee if you pay annually).
 
 ## The Rewards Are Genuinely Good
 
-Flat-rate 3% back on everything is hard to beat. The math is simple:
+Flat-rate 3% back on everything is hard to beat. Here are some of the reasons why:
 
 - It's a **Visa with no foreign transaction fees**, so its usable everywhere vs many Mastercard and Amex backed cards
 - Most flat-rate competitors top out at 1.5%–2% (Chase Freedom Unlimited, Citi Double Cash, Fidelity)
@@ -78,40 +78,40 @@ The math is simple: once you cross the $5,000 annual spend mark (roughly $420/mo
 
 ## Things to Watch Out For
 
-<table class="w-full border-collapse text-left">
+<table className="w-full border-collapse text-left">
   <tbody>
-    <tr class="bg-light-bg dark:bg-dark-bg">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-bg dark:bg-dark-bg">
+      <td className="py-2 px-3 align-top">
         <strong>Cashback is in brokerage cash, not a statement credit.</strong> If you want to use rewards to pay your bill, you'll need to manually move the funds.
       </td>
     </tr>
-    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td className="py-2 px-3 align-top">
         <strong>No traditional signup bonus.</strong> Many competing cards offer large welcome bonuses that can be worth hundreds of dollars in the first year.
       </td>
     </tr>
-    <tr class="bg-light-bg dark:bg-dark-bg">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-bg dark:bg-dark-bg">
+      <td className="py-2 px-3 align-top">
         <strong>Customer support is app‑based only.</strong> There's no phone support. For a credit card, that might matter if you have a dispute.
       </td>
     </tr>
-    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td className="py-2 px-3 align-top">
         <strong>Newer issuer.</strong> Coastal Community Bank and Robinhood's credit card program are relatively new compared to legacy card issuers.
       </td>
     </tr>
-    <tr class="bg-light-bg dark:bg-dark-bg">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-bg dark:bg-dark-bg">
+      <td className="py-2 px-3 align-top">
         <strong>Waitlist and approval friction.</strong> Even for Gold members, the waitlist can take 3–6 months (or longer) with seemingly random invite orders. Approval is also surprisingly strict; reports suggest the issuer is highly sensitive to debt-to-income ratios and recent credit inquiries, leading to denials even for those with 800+ credit scores.
       </td>
     </tr>
-    <tr class="bg-light-accent/10 dark:bg-dark-accent/10">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-accent/10 dark:bg-dark-accent/10">
+      <td className="py-2 px-3 align-top">
         <strong>Cash-like exclusions and "Fair Use".</strong> You won't earn 3% (or anything) on gambling, money orders, or peer-to-peer transfers (like Venmo/CashApp). While high-cost items like <strong>taxes</strong> and <strong>rent</strong> (via portals like Plastiq) *technically* earn 3%, be aware that merchant fees often eat most of that margin or will just not be covered at all.
       </td>
     </tr>
-    <tr class="bg-light-bg dark:bg-dark-bg">
-      <td class="py-2 px-3 align-top">
+    <tr className="bg-light-bg dark:bg-dark-bg">
+      <td className="py-2 px-3 align-top">
         <strong>Value proposition risk.</strong> The 3% flat rate is a "loss leader" in the credit card world (most interchange fees are closer to 2%). Robinhood could "nerf" the value proposition by introducing monthly spend caps, increasing the Gold subscription fee, or reducing the base cashback rate if the program becomes unsustainable.
       </td>
     </tr>
