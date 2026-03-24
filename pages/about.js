@@ -41,7 +41,7 @@ export default function AboutPage() {
         About <span className="text-light-accent dark:text-dark-accent">Me</span> 😎
       </h1>
       <div className="mx-auto bg-gradient-to-b from-light-accent rounded-full w-48 h-48 sm:w-60 sm:h-60 relative overflow-hidden">
-        <Image src={realportrait} alt="Picture of the author" />
+        <Image src={realportrait} alt="Picture of the author" className="object-cover !w-full !h-full" style={{objectPosition: 'center 20%'}} />
       </div>
       <p className="text-lg sm:text-2xl text-light-text dark:text-dark-text md:text-2xl max-w-3xl mx-auto">
         I graduated from{' '}

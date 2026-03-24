@@ -1,96 +1,171 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tristan Maltizo's Portfolio
+
+A modern, responsive portfolio website built with Next.js, showcasing projects, writing, and professional journey. This portfolio serves as a digital garden with performance and accessibility in mind.
+
+## Features
+
+- **Modern Design**: Clean, responsive UI with dark/light mode support
+- **Project Showcase**: Dynamic project cards with filtering and categorization
+- **Blog/Writing Section**: MDX-powered blog with newsletter integration
+- **Contact Form**: Functional contact form with SendGrid integration
+- **SEO Optimized**: Comprehensive meta tags, structured data, and sitemap
+- **Performance**: Optimized images, lazy loading, and fast page loads
+- **Accessibility**: WCAG compliant with semantic HTML and ARIA labels
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS with custom design system
+- **Database**: Firebase/Firestore for dynamic content
+- **Email**: SendGrid for contact form notifications
+- **Content**: MDX for blog posts
+- **Deployment**: Vercel with CI/CD pipeline
+
+## Project Structure
+
+```
+portfolio/
+├── components/          # Reusable React components
+│   ├── ProjectCard.js  # Individual project display
+│   ├── NavBar.js       # Navigation component
+│   └── Contact.js      # Contact form
+├── pages/              # Next.js pages and API routes
+│   ├── projects.js     # Projects showcase page
+│   ├── writing/        # Blog posts
+│   └── api/           # API endpoints
+├── lib/               # Utility functions and data
+│   ├── projects.js    # Project data management
+│   └── posts.js       # Blog post management
+├── posts/             # MDX blog post files
+├── public/            # Static assets
+└── styles/            # Global CSS and Tailwind config
+```
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
 # or
+pnpm install
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-The project now includes a simple navigation bar at the top of every page. Links are defined in
-`components/navLinks.js` and automatically rendered by `components/NavBar.js`. By default the
-header contains links for **Home**, **About**, **Writing**, and **Projects**; adding a new object
-there and creating the corresponding page (e.g. `pages/contact.js`) is all that’s required to
-extend the menu.
+Create a `.env.local` file in the project root:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```env
+# SendGrid Configuration
+SENDGRID_API_KEY=SG.your_sendgrid_api_key
+SENDGRID_FROM_EMAIL=your_verified_email@example.com
+SENDGRID_TO_EMAIL=recipient@example.com
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Firebase Configuration (optional)
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-## Learn More
+## SendGrid Setup
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Contact form / SendGrid setup
-
-This project ships with a simple API route that uses SendGrid to deliver messages from the
-contact form (`components/Contact.js`). Before the route will work you must:
-
-1. Create an [API key in your SendGrid dashboard](https://app.sendgrid.com/settings/api_keys) and give it
-   *Full Access* to `Mail Send`.
+1. Create an [API key in your SendGrid dashboard](https://app.sendgrid.com/settings/api_keys) with *Full Access* to `Mail Send`.
 2. Add the key to your environment as `SENDGRID_API_KEY`.
-   - Locally create a `.env.local` file in the project root and add:
-     ```env
-     SENDGRID_API_KEY=SG.your_real_key_here
-     ```
-   - When deploying (for example to Vercel) add the same variable through the platform's
-     dashboard or CLI.
-3. Verify the `from` address in your SendGrid account. SendGrid will reject
-   any message whose sender does not match a **verified Sender Identity**;
-   the error you saw earlier (`The from address does not match a verified Sender Identity`)
-   is exactly this problem. Go to SendGrid → *Settings → Sender Identities* and either
-   verify the email you intend to use or configure a custom domain.
-   
-   The API now reads the sender and recipient from environment variables:
-   ```env
-   # must be a verified sender identity inside SendGrid. you can use your
-   # existing Gmail address if you've verified it as shown in your screenshot.
-   SENDGRID_FROM_EMAIL=tristan.maltizo@gmail.com
+3. Verify the `from` address in your SendGrid account under *Settings → Sender Identities*.
+4. Configure the sender and recipient emails in your environment variables.
 
-   # where the messages are delivered; defaults to the same value as
-   # SENDGRID_FROM_EMAIL if you leave it unset (handy when emailing yourself).
-   SENDGRID_TO_EMAIL=tristan.maltizo@gmail.com
-   ```
-   If the variables are empty the code falls back to previous hard-coded
-   defaults (`to`→your gmail, `from`→`no-reply@trizothethird.com`).
-
-Once configured you can submit the form on the home page and watch the server logs for
-`sendgrid result` or `sendgrid error` messages. Errors will also be returned in the JSON
-response so you can display them in the UI if desired.
-
-For local debugging there is a simple helper script at the project root, `test-sendgrid.js`.
-Run it with a correctly‑formatted (or dummy) key to exercise the API handler without starting
-Next.js:
-
+For local debugging, use the test script:
 ```bash
-# check behaviour when key is missing
+# Test with missing key
 node test-sendgrid.js
 
-# simulate a bad but syntactically valid key
+# Test with invalid key
 SENDGRID_API_KEY=SG.fake node test-sendgrid.js
 ```
 
-The script sends a fake form payload and prints the handler’s response, which is handy when
-iterating or writing tests. You can remove it later if you like.
+## Content Management
 
-## Deploy on Vercel
+### Adding Projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Projects are managed in `lib/projects.js`. To add a new project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```javascript
+{
+  id: 'project-slug',
+  title: 'Project Title',
+  description: 'Brief description',
+  longDescription: 'Detailed project description',
+  image: '/images/project-screenshot.png',
+  technologies: ['React', 'Next.js', 'Tailwind'],
+  category: 'Web Application',
+  status: 'Completed',
+  startDate: '2024-01-01',
+  lastUpdated: '2024-01-15',
+  liveUrl: 'https://live-demo.com',
+  githubUrl: 'https://github.com/user/repo',
+  featured: true,
+  tags: ['frontend', 'web development']
+}
+```
+
+### Adding Blog Posts
+
+Blog posts are MDX files in the `posts/` directory. Each post should include frontmatter:
+
+```mdx
+---
+title: "Post Title"
+description: "Post description"
+date: "2024-01-01"
+tags: ["tag1", "tag2"]
+---
+
+# Post content here...
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Connect your repository to [Vercel](https://vercel.com/new)
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Manual Deployment
+
+```bash
+npm run build
+npm start
+```
+
+## Performance Optimization
+
+- **Images**: Optimized with Next.js Image component
+- **Code Splitting**: Automatic route-based splitting
+- **Caching**: Static generation for improved performance
+- **Bundle Size**: Optimized dependencies and tree-shaking
+
+## SEO Features
+
+- **Meta Tags**: Dynamic meta descriptions and titles
+- **Structured Data**: JSON-LD for search engines
+- **Sitemap**: Auto-generated sitemap.xml
+- **Open Graph**: Social media sharing optimization
+
+## Contributing
+
+This is a personal portfolio project. For suggestions or improvements, please reach out through the contact form or GitHub issues.
+
+## License
+
+MIT License - feel free to use this as a template for your own portfolio.
