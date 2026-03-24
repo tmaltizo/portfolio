@@ -82,7 +82,7 @@ export default function AboutPage() {
       <section id="connect" className="text-center w-full">
         <div className="max-w-3xl mx-auto px-10 md:px-0">
           <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl m-5">Let&apos;s <span className="text-light-accent dark:text-dark-accent">Connect </span> 📞</h2>
-          <p className="text-lg sm:text-2xl mb-4 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again! TODO: Connect this to an API route or third-party service when ready.</p>
+          <p className="text-lg sm:text-2xl mb-4 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
           <div className="text-4xl sm:text-5xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent">
             <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillLinkedin /></a>
             <a href="https://github.com/tmaltizo" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillGithub /></a>

@@ -1,4 +1,3 @@
-//TODO: Fix the email sending functionality. It is currently not working and I am not sure why. I have set up the SendGrid API key and I am using the correct email addresses, but the emails are not being sent. I will need to debug this further to figure out what is going wrong.
 import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);

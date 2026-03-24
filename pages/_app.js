@@ -3,8 +3,9 @@ import { Analytics } from '@vercel/analytics/next'
 import NavBar from '@/components/NavBar'
 import Sidebar from '@/components/Sidebar'
 import { DarkModeProvider, useDarkMode } from '@/contexts/DarkModeContext'
-
 import { useEffect } from 'react'
+import Head from 'next/head'
+import '@/lib/firebase'
 
 function AppShell({ Component, pageProps }) {
   const { isDark } = useDarkMode()
@@ -16,7 +17,14 @@ function AppShell({ Component, pageProps }) {
   }, [isDark])
 
   return (
-    <> {/* no wrapper div needed for dark class now */}
+    <>
+      <Head>
+        {/* mobile viewport, prevents automatic zooming */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </Head>
       <NavBar />
       <Sidebar />
       <Component {...pageProps} />

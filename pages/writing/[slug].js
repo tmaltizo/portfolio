@@ -4,11 +4,14 @@
 
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { getAllPosts, getPostBySlug } from '../../lib/posts'
 import NetCostCalculator from '../../components/NetCostCalculator'
-import ReaderPoll from '../../components/ReaderPoll'
+import PointValueCalculator from '../../components/PointValueCalculator'
+import RobinhoodPoll from '../../components/RobinhoodPoll'
+import ChaseSapphirePoll from '../../components/ChaseSapphirePoll'
 import NewsletterCTA from '../../components/NewsletterCTA'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -39,7 +42,7 @@ export default function PostPage({ post, mdxSource }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tmaltizo.github.io/portfolio'
   const cleanSiteUrl = siteUrl.replace(/\/$/, '')
   const pageUrl = `${cleanSiteUrl}/writing/${post.slug}`
-  const ogImage = `${cleanSiteUrl}/images/robinhood-gold-card.png`
+  const ogImage = `${cleanSiteUrl}/images/${post.slug === 'chase-sapphire-preferred' ? 'chase-sapphire-preferred-4.webp' : 'robinhood-gold-card.png'}`
   const keywords = [
     ...post.tags,
     'Robinhood Gold review',
@@ -56,8 +59,8 @@ export default function PostPage({ post, mdxSource }) {
     .join(', ')
   const shareText = encodeURIComponent(`${post.title} — ${post.description}`)
   const encodedPageUrl = encodeURIComponent(pageUrl)
-  const twitterHref = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodedPageUrl}&via=tmaltizo`
-  // linkedin-sharing.com is often more reliable for modern LinkedIn redirects
+  const twitterHref = `https://x.com/intent/tweet?text=${shareText}&url=${encodedPageUrl}&via=TristanMaltizo`
+  // LinkedIn sharing (URL-only method - LinkedIn scrapes meta tags for title/description)
   const linkedInHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedPageUrl}`
   // Gmail Desktop override if default mailto fails (common in Windows/Chrome without protocol handler)
   const mailtoHref = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=${encodeURIComponent(post.title)}&body=${encodeURIComponent(post.description + "\n\n" + pageUrl)}`
@@ -68,6 +71,7 @@ export default function PostPage({ post, mdxSource }) {
         <title>{`${post.title} | Writing`}</title>
         <meta name="description" content={post.description} />
         <meta name="keywords" content={keywords} />
+        <link rel="canonical" href={pageUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:image" content={ogImage} />
@@ -77,6 +81,36 @@ export default function PostPage({ post, mdxSource }) {
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
         <meta name="twitter:image" content={ogImage} />
+        
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": post.title,
+              "description": post.description,
+              "image": ogImage,
+              "datePublished": post.date,
+              "dateModified": post.date,
+              "author": {
+                "@type": "Person",
+                "name": "Tristan Maltizo"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Tristan Maltizo",
+                "url": "https://tmaltizo.github.io/portfolio"
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": pageUrl
+              },
+              "keywords": keywords
+            })
+          }}
+        />
       </Head>
       <main className="bg-light-bg dark:bg-dark-bg min-h-screen mr-10 sm:mr-12 px-0 sm:px-4 md:px-8 py-4 sm:py-12 overflow-x-hidden">
         <div className="max-w-3xl mx-auto pl-8 sm:pl-8">
@@ -150,7 +184,7 @@ export default function PostPage({ post, mdxSource }) {
 
         {/* Post body */}
         <article className="prose dark:prose-invert max-w-none">
-          <MDXRemote {...mdxSource} components={{ NetCostCalculator, ReaderPoll, NewsletterCTA }} />
+          <MDXRemote {...mdxSource} components={{ Image, NetCostCalculator, PointValueCalculator, RobinhoodPoll, ChaseSapphirePoll, NewsletterCTA }} />
         </article>
         </div>
       </main>
