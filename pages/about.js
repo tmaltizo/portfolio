@@ -6,6 +6,7 @@
  * @returns {JSX.Element} The About page layout.
  */
 import Image from 'next/image'
+import Link from 'next/link'
 import realportrait from 'public/realportrait.jpg'
 import {
   FaJava,
@@ -81,19 +82,32 @@ export default function AboutPage() {
 
       <section id="connect" className="text-center w-full">
         <div className="max-w-3xl mx-auto px-10 md:px-0">
-          <h2 className="text-3xl sm:text-4xl py-2 text-light-text-dark dark:text-dark-text font-medium md:text-4xl m-5">Let&apos;s <span className="text-light-accent dark:text-dark-accent">Connect </span> 📞</h2>
-          <p className="text-lg sm:text-2xl mb-4 text-light-text dark:text-dark-text md:text-2xl">Thanks for visiting my website! If you would like to know more about me or my work, feel free to send me a message below. You can also explore my LinkedIn and Github. See you again!</p>
-          <div className="text-4xl sm:text-5xl flex justify-center gap-16 py-3 text-light-accent dark:text-dark-accent">
-            <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillLinkedin /></a>
-            <a href="https://github.com/tmaltizo" target="_blank" className="hover:cursor-pointer hover:text-light-accent-hover dark:hover:text-dark-accent-hover"><AiFillGithub /></a>
+          <div className="bg-light-bg-secondary dark:bg-dark-bg-secondary rounded-lg p-8 border border-light-border dark:border-dark-border">
+            <h2 className="text-xl font-semibold text-light-text-dark dark:text-dark-text mb-3">
+              Interested in collaborating?
+            </h2>
+            <p className="text-light-text dark:text-dark-text mb-6 max-w-2xl mx-auto">
+              I&apos;m always open to discussing new opportunities, creative ideas, or potential partnerships. 
+              Feel free to reach out if you&apos;d like to collaborate on a project or just chat about technology.
+            </p>
+            <div className="flex gap-4 justify-center mb-8">
+              <div className="flex gap-4 items-center">
+                <a href="https://www.linkedin.com/in/tristan-maltizo/" target="_blank" className="text-2xl text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover">
+                  <AiFillLinkedin />
+                </a>
+                <a href="https://github.com/tmaltizo" target="_blank" className="text-2xl text-light-accent dark:text-dark-accent hover:text-light-accent-hover dark:hover:text-dark-accent-hover">
+                  <AiFillGithub />
+                </a>
+              </div>
+            </div>
+            
+            {/* contact form moved inside the box */}
+            <div className="text-left">
+              <Contact />
+            </div>
           </div>
         </div>
       </section>
-
-      {/* contact form moved here and tightened up spacing */}
-      <div className="max-w-xl mx-auto py-0 text-left">
-        <Contact />
-      </div>
     </main>
   )
 }

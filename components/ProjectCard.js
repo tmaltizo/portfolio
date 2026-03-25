@@ -1,6 +1,7 @@
 // components/ProjectCard.js
 // Individual project card component for the projects showcase
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -10,9 +11,13 @@ import {
   TbWorld,
   TbCalendar,
   TbClock,
+  TbChevronDown,
+  TbChevronUp,
 } from 'react-icons/tb'
 
 export default function ProjectCard({ project }) {
+  const [showAllTech, setShowAllTech] = useState(false)
+  
   const {
     id,
     title,
@@ -26,6 +31,10 @@ export default function ProjectCard({ project }) {
     githubUrl,
     featured,
   } = project
+
+  const techLimit = 6
+  const displayedTech = showAllTech ? technologies : technologies.slice(0, techLimit)
+  const hasMoreTech = technologies.length > techLimit
 
   const statusColors = {
     'Completed': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
@@ -90,7 +99,7 @@ export default function ProjectCard({ project }) {
         {/* Technologies */}
         <div className="mb-4">
           <div className="flex flex-wrap gap-2">
-            {technologies.slice(0, 4).map((tech) => (
+            {displayedTech.map((tech) => (
               <span
                 key={tech}
                 className="inline-block px-2 py-1 text-xs font-medium rounded bg-light-accent/10 text-light-accent dark:bg-dark-accent/10 dark:text-dark-accent"
@@ -98,10 +107,23 @@ export default function ProjectCard({ project }) {
                 {tech}
               </span>
             ))}
-            {technologies.length > 4 && (
-              <span className="inline-block px-2 py-1 text-xs font-medium rounded bg-light-accent/10 text-light-accent dark:bg-dark-accent/10 dark:text-dark-accent">
-                +{technologies.length - 4}
-              </span>
+            {hasMoreTech && (
+              <button
+                onClick={() => setShowAllTech(!showAllTech)}
+                className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded bg-light-accent/10 text-light-accent dark:bg-dark-accent/10 dark:text-dark-accent hover:bg-light-accent/20 dark:hover:bg-dark-accent/20 transition-colors cursor-pointer"
+              >
+                {showAllTech ? (
+                  <>
+                    <TbChevronUp className="w-3 h-3" />
+                    Show less
+                  </>
+                ) : (
+                  <>
+                    <TbChevronDown className="w-3 h-3" />
+                    +{technologies.length - techLimit} more
+                  </>
+                )}
+              </button>
             )}
           </div>
         </div>

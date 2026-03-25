@@ -14,6 +14,12 @@ import {
   TbThumbUp,
   TbTable,
   TbHelpCircle,
+  TbVideo,
+  TbSettings,
+  TbBulb,
+  TbBug,
+  TbTrophy,
+  TbBrain,
 } from 'react-icons/tb'
 import {
   AiOutlineMail,
@@ -47,6 +53,19 @@ export const SIDEBAR_CONFIGS = {
       { to: 'my-verdict', icon: <TbThumbUp />, title: 'Verdict' },
       { to: 'competitive-scoreboard', icon: <TbTable />, title: 'Scoreboard' },
       { to: 'is-the-robinhood-gold-card-a-trap-frequently-asked-questions', icon: <TbHelpCircle />, title: 'FAQ' },
+    ],
+    scrollSpy: true,
+  },
+
+  // Making AI Youtube Short article configuration
+  '/writing/robinhood-gold-ai-analysis': {
+    sections: [
+      { to: 'the-ai-stack', icon: <TbBrain />, title: 'AI Stack' },
+      { to: 'the-process', icon: <TbSettings />, title: 'Process' },
+      { to: 'technical-challenges', icon: <TbBug />, title: 'Challenges' },
+      { to: 'the-results', icon: <TbTrophy />, title: 'Results' },
+      { to: 'why-this-matters', icon: <TbBulb />, title: 'Why Matters' },
+      { to: 'the-bigger-picture', icon: <TbVideo />, title: 'Bigger Picture' },
     ],
     scrollSpy: true,
   },

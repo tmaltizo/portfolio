@@ -182,33 +182,7 @@ export default function ProjectsPage({ projects, featuredProjects, categories, t
             )}
           </section>
 
-          {/* Call to Action */}
-          <section className="mt-16 text-center">
-            <div className="bg-light-bg-secondary dark:bg-dark-bg-secondary rounded-lg p-8 border border-light-border dark:border-dark-border">
-              <h3 className="text-xl font-semibold text-light-text-dark dark:text-dark-text mb-3">
-                Interested in collaborating?
-              </h3>
-              <p className="text-light-text dark:text-dark-text mb-6 max-w-2xl mx-auto">
-                I&apos;m always open to discussing new opportunities, creative ideas, or potential partnerships. 
-                Feel free to reach out if you&apos;d like to collaborate on a project or just chat about technology.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-light-accent dark:bg-dark-accent text-white rounded-lg hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover transition-colors"
-                >
-                  Get in Touch
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-light-border dark:border-dark-border text-light-text dark:text-dark-text rounded-lg hover:border-light-accent dark:hover:border-dark-accent hover:text-light-accent dark:hover:text-dark-accent transition-colors"
-                >
-                  Learn More About Me
-                </Link>
-              </div>
-            </div>
-          </section>
-        </div>
+          </div>
       </main>
     </>
   )

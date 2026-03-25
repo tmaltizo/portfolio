@@ -12,6 +12,7 @@ import NetCostCalculator from '../../components/NetCostCalculator'
 import PointValueCalculator from '../../components/PointValueCalculator'
 import RobinhoodPoll from '../../components/RobinhoodPoll'
 import ChaseSapphirePoll from '../../components/ChaseSapphirePoll'
+import AIContentPoll from '../../components/AIContentPoll'
 import NewsletterCTA from '../../components/NewsletterCTA'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -184,7 +185,7 @@ export default function PostPage({ post, mdxSource }) {
 
         {/* Post body */}
         <article className="prose dark:prose-invert max-w-none">
-          <MDXRemote {...mdxSource} components={{ Image, NetCostCalculator, PointValueCalculator, RobinhoodPoll, ChaseSapphirePoll, NewsletterCTA }} />
+          <MDXRemote {...mdxSource} components={{ Image, NetCostCalculator, PointValueCalculator, RobinhoodPoll, ChaseSapphirePoll, AIContentPoll, NewsletterCTA }} />
         </article>
         </div>
       </main>
