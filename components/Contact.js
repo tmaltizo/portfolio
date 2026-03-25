@@ -35,8 +35,8 @@ export default function Contact() {
     }
 
     return (
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name" className="text-xl py-2 text-light-text dark:text-dark-text md:text-2xl">Name</label>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <label htmlFor="name" className="text-sm font-medium text-light-text dark:text-dark-text block mb-1">Name</label>
         <input
           type="text"
           id="name"
@@ -45,9 +45,9 @@ export default function Contact() {
           onChange={handleNameChange}
           placeholder="Enter your name"
           required
-          className="border border-light-border dark:border-dark-border rounded-md p-2 w-full text-light-text dark:text-dark-text dark:bg-dark-bg"
+          className="border border-light-border dark:border-dark-border rounded-sm px-3 py-2 w-full text-sm text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg focus:outline-none focus:ring-1 focus:ring-light-accent dark:focus:ring-dark-accent"
         />
-        <label htmlFor="email" className="text-xl py-2 text-light-text dark:text-dark-text md:text-2xl">Email</label>
+        <label htmlFor="email" className="text-sm font-medium text-light-text dark:text-dark-text block mb-1">Email</label>
         <input
           type="email"
           id="email"
@@ -56,9 +56,9 @@ export default function Contact() {
           onChange={handleEmailChange}
           placeholder="Enter your email"
           required
-          className="border border-light-border dark:border-dark-border rounded-md p-2 w-full text-light-text dark:text-dark-text dark:bg-dark-bg"
+          className="border border-light-border dark:border-dark-border rounded-sm px-3 py-2 w-full text-sm text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg focus:outline-none focus:ring-1 focus:ring-light-accent dark:focus:ring-dark-accent"
         />
-        <label htmlFor="message" className="text-xl py-2 text-light-text dark:text-dark-text md:text-2xl">Message</label>
+        <label htmlFor="message" className="text-sm font-medium text-light-text dark:text-dark-text block mb-1">Message</label>
         <textarea
           id="message"
           name="message"
@@ -66,13 +66,13 @@ export default function Contact() {
           onChange={handleMessageChange}
           placeholder="Enter your message"
           required
-          className="border border-light-border dark:border-dark-border rounded-md p-2 w-full text-light-text dark:text-dark-text dark:bg-dark-bg"
-          rows="5"
+          className="border border-light-border dark:border-dark-border rounded-sm px-3 py-2 w-full text-sm text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg focus:outline-none focus:ring-1 focus:ring-light-accent dark:focus:ring-dark-accent resize-none"
+          rows="4"
         />
         {isSent && (
-          <p className="text-light-accent dark:text-dark-accent mt-2">Email sent successfully. I&apos;ll try to reply as soon as possible!</p>
+          <p className="text-sm text-light-accent dark:text-dark-accent mt-2">Email sent successfully. I&apos;ll try to reply as soon as possible!</p>
         )}
-        <button type="submit" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 my-3 rounded-md hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover">
+        <button type="submit" className="bg-light-accent dark:bg-dark-accent text-white px-4 py-2 rounded-sm text-sm hover:bg-light-accent-hover dark:hover:bg-dark-accent-hover transition-colors">
           Send
         </button>
       </form>

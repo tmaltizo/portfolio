@@ -1,4 +1,5 @@
 
+/*
 import Image from 'next/image';
 import portrait from "public/mochalove.gif";
 import Head from 'next/head'
@@ -94,4 +95,10 @@ export default function Honeybun() {
                 </section>
         </div>
     );
+}
+*/
+
+// Placeholder export to avoid import errors
+export default function Honeybun() {
+  return <div>Honeybun component is currently disabled</div>;
 }

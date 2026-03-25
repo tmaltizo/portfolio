@@ -3,58 +3,54 @@
 import { useState, useEffect } from 'react'
 
 /**
- * ReaderPoll — Firebase-powered poll for Robinhood Gold article.
+ * BasePoll — Reusable Firebase-powered poll component.
  *
- * Stores votes in Firebase Firestore and displays real-time results
- * to all readers. Each user can vote once per browser session.
- *
- * Designed for embedding in MDX posts: <ReaderPoll />
+ * @param {Object} props
+ * @param {string} props.pollId - Unique identifier for this poll
+ * @param {string} props.question - Poll question text
+ * @param {Array} props.options - Array of {id, label} objects
  */
 
-const POLL_ID = 'rh-gold-poll-v1'
-const QUESTION = 'Do you think the 3% flat rate is sustainable long-term?'
-
-const OPTIONS = [
-  { id: 'yes', label: 'Yes — Robinhood can afford it' },
-  { id: 'maybe', label: 'Maybe — but expect tweaks within 2 years' },
-  { id: 'no', label: 'No — it\'s a loss-leader that will get nerfed' },
-  { id: 'unsure', label: 'Not sure yet' },
-]
-
-function getSessionVote() {
+function getSessionVote(pollId) {
   if (typeof window === 'undefined') return null
   try {
-    return sessionStorage.getItem(`${POLL_ID}-user-vote`)
+    return sessionStorage.getItem(`${pollId}-user-vote`)
   } catch {
     return null
   }
 }
 
-function setSessionVote(optionId) {
+function setSessionVote(pollId, optionId) {
   if (typeof window === 'undefined') return
   try {
-    sessionStorage.setItem(`${POLL_ID}-user-vote`, optionId)
+    sessionStorage.setItem(`${pollId}-user-vote`, optionId)
   } catch {
     // Ignore sessionStorage errors
   }
 }
 
-export default function ReaderPoll() {
-  const [votes, setVotes] = useState({ yes: 0, maybe: 0, no: 0, unsure: 0 })
+export default function BasePoll({ pollId, question, options }) {
+  const [votes, setVotes] = useState({})
   const [userVote, setUserVote] = useState(null)
   const [mounted, setMounted] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  // Initialize votes object with all options set to 0
+  const initialVotes = {}
+  options.forEach(opt => {
+    initialVotes[opt.id] = 0
+  })
+
   // Fetch poll results from Firebase on mount
   useEffect(() => {
-    const storedVote = getSessionVote()
+    const storedVote = getSessionVote(pollId)
     if (storedVote) {
       setUserVote(storedVote)
     }
     
     async function fetchPollResults() {
       try {
-        const response = await fetch(`/api/poll-results?pollId=${POLL_ID}`)
+        const response = await fetch(`/api/poll-results?pollId=${pollId}`)
         if (response.ok) {
           const data = await response.json()
           const voteCounts = {}
@@ -72,7 +68,7 @@ export default function ReaderPoll() {
 
     fetchPollResults()
     setMounted(true)
-  }, [])
+  }, [pollId])
 
   const total = Object.values(votes).reduce((a, b) => a + b, 0)
 
@@ -84,7 +80,7 @@ export default function ReaderPoll() {
       const response = await fetch('/api/poll', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pollId: POLL_ID, optionId }),
+        body: JSON.stringify({ pollId, optionId, question, options }),
       })
 
       if (response.ok) {
@@ -95,7 +91,13 @@ export default function ReaderPoll() {
         })
         setVotes(voteCounts)
         setUserVote(optionId)
-        setSessionVote(optionId)
+        setSessionVote(pollId, optionId)
+      } else if (response.status === 404) {
+        // Poll needs initialization, but we can't vote without it first existing
+        // This shouldn't happen with our current setup
+        console.error('Poll not initialized')
+        setLoading(false)
+        return
       }
     } catch (error) {
       console.error('Failed to submit vote:', error)
@@ -108,9 +110,9 @@ export default function ReaderPoll() {
     // SSR / loading placeholder
     return (
       <div className="rounded-2xl border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg p-6 my-6 text-light-text dark:text-dark-text">
-        <p className="font-semibold mb-3">{QUESTION}</p>
+        <p className="font-semibold mb-3">{question}</p>
         <div className="space-y-2">
-          {OPTIONS.map((opt) => (
+          {options.map((opt) => (
             <div
               key={opt.id}
               className="h-10 rounded-lg bg-light-accent/10 dark:bg-dark-accent/10 animate-pulse"
@@ -126,11 +128,11 @@ export default function ReaderPoll() {
       <p className="text-base font-semibold text-light-text-dark dark:text-dark-text mb-1">
         Quick poll
       </p>
-      <p className="text-sm mb-4">{QUESTION}</p>
+      <p className="text-sm mb-4">{question}</p>
 
       <div className="space-y-2">
-        {OPTIONS.map((opt) => {
-          const count = votes[opt.id]
+        {options.map((opt) => {
+          const count = votes[opt.id] || 0
           const pct = total > 0 ? (count / total) * 100 : 0
           const isSelected = userVote === opt.id
 

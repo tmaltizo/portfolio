@@ -55,3 +55,6 @@ pnpm-lock.yaml
 
 # GitHub workflows
 .github/
+
+# Cline ignore
+.clineignore

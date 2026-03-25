@@ -5,9 +5,8 @@ import { useState } from 'react'
 /**
  * NewsletterCTA — A "1-minute weekly tip" email capture.
  *
- * Currently stores sign-ups in localStorage as a proof-of-concept.
- * Swap the handleSubmit body with a fetch() to your API route or
- * third-party service (ConvertKit, Buttondown, etc.) when ready.
+ * Stores sign-ups in Firebase Firestore with duplicate prevention.
+ * Integrates with the newsletter API route for persistent storage.
  *
  * Embedded in MDX posts via <NewsletterCTA />.
  */
@@ -22,27 +21,28 @@ export default function NewsletterCTA() {
     setStatus('sending')
 
     try {
-      // ── Replace this block with a real API call ───────────────────────
-      // Example:
-      //   await fetch('/api/subscribe', {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({ email }),
-      //   })
-      //
-      // For now, simulate a short delay and store locally:
-      await new Promise((resolve) => setTimeout(resolve, 600))
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
 
-      const existing = JSON.parse(localStorage.getItem('newsletter-subs') || '[]')
-      if (!existing.includes(email)) {
-        existing.push(email)
-        localStorage.setItem('newsletter-subs', JSON.stringify(existing))
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        // Handle specific error messages
+        if (response.status === 409) {
+          setStatus('error')
+          // You could set a specific error message here if needed
+        } else {
+          setStatus('error')
+        }
       }
-      // ─────────────────────────────────────────────────────────────────
-
-      setStatus('success')
-      setEmail('')
-    } catch {
+    } catch (error) {
+      console.error('Newsletter subscription error:', error)
       setStatus('error')
     }
   }
@@ -50,7 +50,7 @@ export default function NewsletterCTA() {
   return (
     <div className="rounded-2xl border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg p-6 my-8 text-light-text dark:text-dark-text">
       <h4 className="text-base font-semibold text-light-text-dark dark:text-dark-text mb-1">
-        Like this kind of breakdown? TODO: Connect this to an API route or third-party service when ready.
+        Like this kind of breakdown?
       </h4>
       <p className="text-sm mb-4">
         Sign up for updates — no spam, no affiliate fluff, just helpful notes like what you just read above.
