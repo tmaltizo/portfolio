@@ -64,7 +64,6 @@ export const SIDEBAR_CONFIGS = {
       { to: 'the-process', icon: <TbSettings />, title: 'Process' },
       { to: 'technical-challenges', icon: <TbBug />, title: 'Challenges' },
       { to: 'the-results', icon: <TbTrophy />, title: 'Results' },
-      { to: 'why-this-matters', icon: <TbBulb />, title: 'Why Matters' },
       { to: 'the-bigger-picture', icon: <TbVideo />, title: 'Bigger Picture' },
     ],
     scrollSpy: true,

@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react'
 function getSessionVote(pollId) {
   if (typeof window === 'undefined') return null
   try {
-    return sessionStorage.getItem(`${pollId}-user-vote`)
+    return localStorage.getItem(`${pollId}-user-vote`)
   } catch {
     return null
   }
@@ -23,9 +23,9 @@ function getSessionVote(pollId) {
 function setSessionVote(pollId, optionId) {
   if (typeof window === 'undefined') return
   try {
-    sessionStorage.setItem(`${pollId}-user-vote`, optionId)
+    localStorage.setItem(`${pollId}-user-vote`, optionId)
   } catch {
-    // Ignore sessionStorage errors
+    // Ignore localStorage errors
   }
 }
 
@@ -72,6 +72,24 @@ export default function BasePoll({ pollId, question, options }) {
 
   const total = Object.values(votes).reduce((a, b) => a + b, 0)
 
+  async function fetchAndShowResults(votedOptionId) {
+    try {
+      const response = await fetch(`/api/poll-results?pollId=${pollId}`)
+      if (response.ok) {
+        const data = await response.json()
+        const voteCounts = {}
+        Object.keys(data.options).forEach(key => {
+          voteCounts[key] = data.options[key].votes || 0
+        })
+        setVotes(voteCounts)
+      }
+    } catch (error) {
+      console.error('Failed to fetch poll results:', error)
+    }
+    setUserVote(votedOptionId)
+    setSessionVote(pollId, votedOptionId)
+  }
+
   async function handleVote(optionId) {
     if (userVote) return // already voted
 
@@ -92,12 +110,9 @@ export default function BasePoll({ pollId, question, options }) {
         setVotes(voteCounts)
         setUserVote(optionId)
         setSessionVote(pollId, optionId)
-      } else if (response.status === 404) {
-        // Poll needs initialization, but we can't vote without it first existing
-        // This shouldn't happen with our current setup
-        console.error('Poll not initialized')
-        setLoading(false)
-        return
+      } else if (response.status === 409 || response.status === 429) {
+        // Already voted or rate limited — fetch current results and show them
+        await fetchAndShowResults(optionId)
       }
     } catch (error) {
       console.error('Failed to submit vote:', error)

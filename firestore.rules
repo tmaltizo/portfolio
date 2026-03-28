@@ -12,7 +12,7 @@ service cloud.firestore {
     
     // Poll votes collection - API access only
     match /poll_votes/{voteId} {
-      allow read: if false; // No direct reads - use API routes
+      allow read: if true; // Allow API routes to check existing votes
       allow write: if true; // Allow API routes to write votes
       allow create: if true; // Allow API routes to create votes
       allow update: if false; // No direct updates - use API routes
@@ -28,15 +28,19 @@ service cloud.firestore {
       allow delete: if false; // No direct deletes - use API routes
     }
     
+    // IP votes collection - persistent IP-based duplicate prevention
+    match /ip_votes/{voteId} {
+      allow read: if true; // Allow API routes to check existing IP votes
+      allow write: if true; // Allow API routes to record IP votes
+      allow create: if true; // Allow API routes to create IP vote records
+      allow update: if false; // No updates needed
+      allow delete: if false; // No direct deletes - use API routes
+    }
+    
     // Test collection - read/write for development
     match /test/{documentId} {
       allow read: if true;
       allow write: if true;
-    }
-    
-    // Deny all other access
-    match /{document=**} {
-      allow read, write: if false;
     }
   }
 }
