@@ -1,20 +1,20 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Polls collection - read access to all, write access restricted
+    // Polls collection - read access to all, write access for API
     match /polls/{pollId} {
       allow read: if true; // Anyone can read poll data
-      allow write: if false; // No direct writes - use API routes
-      allow create: if false; // No direct creates - use API routes
-      allow update: if false; // No direct updates - use API routes
+      allow write: if true; // Allow API routes to update poll data
+      allow create: if true; // Allow API routes to create polls
+      allow update: if true; // Allow API routes to update polls
       allow delete: if false; // No direct deletes - use API routes
     }
     
-    // Poll votes collection - restricted access
+    // Poll votes collection - API access only
     match /poll_votes/{voteId} {
       allow read: if false; // No direct reads - use API routes
-      allow write: if false; // No direct writes - use API routes
-      allow create: if false; // No direct creates - use API routes
+      allow write: if true; // Allow API routes to write votes
+      allow create: if true; // Allow API routes to create votes
       allow update: if false; // No direct updates - use API routes
       allow delete: if false; // No direct deletes - use API routes
     }
@@ -32,6 +32,11 @@ service cloud.firestore {
     match /test/{documentId} {
       allow read: if true;
       allow write: if true;
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
