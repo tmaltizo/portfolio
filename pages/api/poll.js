@@ -34,14 +34,6 @@ async function checkRateLimit(ip, pollId, fingerprint, db) {
     return { allowed: false, reason: 'IP rate limit exceeded' };
   }
 
-  // Check Firestore for persistent IP vote record
-  const ipVotesRef = collection(db, 'ip_votes');
-  const ipQuery = query(ipVotesRef, where('pollId', '==', pollId), where('ip', '==', ip.substring(0, 45)));
-  const ipVotes = await getDocs(ipQuery);
-  if (!ipVotes.empty) {
-    return { allowed: false, reason: 'IP rate limit exceeded' };
-  }
-
   return { allowed: true };
 }
 
@@ -102,11 +94,13 @@ export default async function handler(req, res) {
 
     // Check if this fingerprint already voted in this poll
     const votesRef = collection(db, 'poll_votes');
-    const voteQuery = query(votesRef, where('pollId', '==', pollId), where('fingerprint', '==', fingerprint));
-    const existingVotes = await getDocs(voteQuery);
+    if (process.env.NODE_ENV !== 'development') {
+      const voteQuery = query(votesRef, where('pollId', '==', pollId), where('fingerprint', '==', fingerprint));
+      const existingVotes = await getDocs(voteQuery);
 
-    if (!existingVotes.empty) {
-      return res.status(409).json({ error: 'You have already voted in this poll' });
+      if (!existingVotes.empty) {
+        return res.status(409).json({ error: 'You have already voted in this poll' });
+      }
     }
 
     // Reference to the poll document
@@ -152,14 +146,6 @@ export default async function handler(req, res) {
       optionId,
       fingerprint,
       ip: ip.substring(0, 45), // Truncate IP for privacy
-      votedAt: serverTimestamp()
-    });
-
-    // Store persistent IP vote record in Firestore
-    const ipVotesRef = collection(db, 'ip_votes');
-    await setDoc(doc(ipVotesRef), {
-      pollId,
-      ip: ip.substring(0, 45),
       votedAt: serverTimestamp()
     });
 

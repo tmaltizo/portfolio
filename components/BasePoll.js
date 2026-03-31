@@ -30,6 +30,7 @@ function setSessionVote(pollId, optionId) {
 }
 
 export default function BasePoll({ pollId, question, options }) {
+  const effectivePollId = process.env.NODE_ENV === 'development' ? `dev-${pollId}` : pollId
   const [votes, setVotes] = useState({})
   const [userVote, setUserVote] = useState(null)
   const [mounted, setMounted] = useState(false)
@@ -43,14 +44,16 @@ export default function BasePoll({ pollId, question, options }) {
 
   // Fetch poll results from Firebase on mount
   useEffect(() => {
-    const storedVote = getSessionVote(pollId)
-    if (storedVote) {
-      setUserVote(storedVote)
+    if (process.env.NODE_ENV !== 'development') {
+      const storedVote = getSessionVote(effectivePollId)
+      if (storedVote) {
+        setUserVote(storedVote)
+      }
     }
     
     async function fetchPollResults() {
       try {
-        const response = await fetch(`/api/poll-results?pollId=${pollId}`)
+        const response = await fetch(`/api/poll-results?pollId=${effectivePollId}`)
         if (response.ok) {
           const data = await response.json()
           const voteCounts = {}
@@ -68,13 +71,13 @@ export default function BasePoll({ pollId, question, options }) {
 
     fetchPollResults()
     setMounted(true)
-  }, [pollId])
+  }, [effectivePollId])
 
   const total = Object.values(votes).reduce((a, b) => a + b, 0)
 
   async function fetchAndShowResults(votedOptionId) {
     try {
-      const response = await fetch(`/api/poll-results?pollId=${pollId}`)
+      const response = await fetch(`/api/poll-results?pollId=${effectivePollId}`)
       if (response.ok) {
         const data = await response.json()
         const voteCounts = {}
@@ -87,7 +90,7 @@ export default function BasePoll({ pollId, question, options }) {
       console.error('Failed to fetch poll results:', error)
     }
     setUserVote(votedOptionId)
-    setSessionVote(pollId, votedOptionId)
+    setSessionVote(effectivePollId, votedOptionId)
   }
 
   async function handleVote(optionId) {
@@ -98,7 +101,7 @@ export default function BasePoll({ pollId, question, options }) {
       const response = await fetch('/api/poll', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pollId, optionId, question, options }),
+        body: JSON.stringify({ pollId: effectivePollId, optionId, question, options }),
       })
 
       if (response.ok) {
@@ -109,7 +112,7 @@ export default function BasePoll({ pollId, question, options }) {
         })
         setVotes(voteCounts)
         setUserVote(optionId)
-        setSessionVote(pollId, optionId)
+        setSessionVote(effectivePollId, optionId)
       } else if (response.status === 409 || response.status === 429) {
         // Already voted or rate limited — fetch current results and show them
         await fetchAndShowResults(optionId)
