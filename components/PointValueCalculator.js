@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 export default function PointValueCalculator() {
-  const [annualSpend, setAnnualSpend] = useState(15000)
-  const [pointValue, setPointValue] = useState(2.0)
+  const [annualSpend, setAnnualSpend] = useState(5000)
+  const [pointValue, setPointValue] = useState(3.0)
   
   const annualFee = 95
-  const pointsPerYear = annualSpend * 1 // Base 1x points
-  const totalValue = (pointsPerYear * pointValue) / 100
+  const pointsPerYear = Math.round(annualSpend * pointValue)
+  const totalValue = (annualSpend * pointValue) / 100
   const netValue = totalValue - annualFee
   const breakEvenSpend = annualFee / (pointValue / 100)
   
@@ -43,7 +43,7 @@ export default function PointValueCalculator() {
           <input
             type="range"
             min="1"
-            max="4"
+            max="6"
             step="0.1"
             value={pointValue}
             onChange={(e) => setPointValue(Number(e.target.value))}
@@ -51,7 +51,7 @@ export default function PointValueCalculator() {
           />
           <div className="flex justify-between text-xs text-light-text/60 dark:text-dark-text/60 mt-1">
             <span>1¢ (Cash)</span>
-            <span>4¢ (Premium)</span>
+            <span>6¢ (Optimal)</span>
           </div>
         </div>
         
