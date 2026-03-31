@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react'
 function getSessionVote(pollId) {
   if (typeof window === 'undefined') return null
   try {
-    return sessionStorage.getItem(`${pollId}-user-vote`)
+    return localStorage.getItem(`${pollId}-user-vote`)
   } catch {
     return null
   }
@@ -23,13 +23,14 @@ function getSessionVote(pollId) {
 function setSessionVote(pollId, optionId) {
   if (typeof window === 'undefined') return
   try {
-    sessionStorage.setItem(`${pollId}-user-vote`, optionId)
+    localStorage.setItem(`${pollId}-user-vote`, optionId)
   } catch {
-    // Ignore sessionStorage errors
+    // Ignore localStorage errors
   }
 }
 
 export default function BasePoll({ pollId, question, options }) {
+  const effectivePollId = process.env.NODE_ENV === 'development' ? `dev-${pollId}` : pollId
   const [votes, setVotes] = useState({})
   const [userVote, setUserVote] = useState(null)
   const [mounted, setMounted] = useState(false)
@@ -43,14 +44,16 @@ export default function BasePoll({ pollId, question, options }) {
 
   // Fetch poll results from Firebase on mount
   useEffect(() => {
-    const storedVote = getSessionVote(pollId)
-    if (storedVote) {
-      setUserVote(storedVote)
+    if (process.env.NODE_ENV !== 'development') {
+      const storedVote = getSessionVote(effectivePollId)
+      if (storedVote) {
+        setUserVote(storedVote)
+      }
     }
     
     async function fetchPollResults() {
       try {
-        const response = await fetch(`/api/poll-results?pollId=${pollId}`)
+        const response = await fetch(`/api/poll-results?pollId=${effectivePollId}`)
         if (response.ok) {
           const data = await response.json()
           const voteCounts = {}
@@ -68,9 +71,27 @@ export default function BasePoll({ pollId, question, options }) {
 
     fetchPollResults()
     setMounted(true)
-  }, [pollId])
+  }, [effectivePollId])
 
   const total = Object.values(votes).reduce((a, b) => a + b, 0)
+
+  async function fetchAndShowResults(votedOptionId) {
+    try {
+      const response = await fetch(`/api/poll-results?pollId=${effectivePollId}`)
+      if (response.ok) {
+        const data = await response.json()
+        const voteCounts = {}
+        Object.keys(data.options).forEach(key => {
+          voteCounts[key] = data.options[key].votes || 0
+        })
+        setVotes(voteCounts)
+      }
+    } catch (error) {
+      console.error('Failed to fetch poll results:', error)
+    }
+    setUserVote(votedOptionId)
+    setSessionVote(effectivePollId, votedOptionId)
+  }
 
   async function handleVote(optionId) {
     if (userVote) return // already voted
@@ -80,7 +101,7 @@ export default function BasePoll({ pollId, question, options }) {
       const response = await fetch('/api/poll', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pollId, optionId, question, options }),
+        body: JSON.stringify({ pollId: effectivePollId, optionId, question, options }),
       })
 
       if (response.ok) {
@@ -91,13 +112,10 @@ export default function BasePoll({ pollId, question, options }) {
         })
         setVotes(voteCounts)
         setUserVote(optionId)
-        setSessionVote(pollId, optionId)
-      } else if (response.status === 404) {
-        // Poll needs initialization, but we can't vote without it first existing
-        // This shouldn't happen with our current setup
-        console.error('Poll not initialized')
-        setLoading(false)
-        return
+        setSessionVote(effectivePollId, optionId)
+      } else if (response.status === 409 || response.status === 429) {
+        // Already voted or rate limited — fetch current results and show them
+        await fetchAndShowResults(optionId)
       }
     } catch (error) {
       console.error('Failed to submit vote:', error)

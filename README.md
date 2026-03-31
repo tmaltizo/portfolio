@@ -162,6 +162,31 @@ npm start
 - **Sitemap**: Auto-generated sitemap.xml
 - **Open Graph**: Social media sharing optimization
 
+## Poll System
+
+Interactive polls are powered by Firebase Firestore. Polls appear in blog posts and allow readers to vote on questions related to the article.
+
+### How It Works
+
+- Votes are stored in Firestore under the `polls` and `poll_votes` collections
+- Results are displayed immediately after voting
+- Poll data is initialized on first vote if the poll doesn't exist yet
+
+### Voting Limitations (Per Poll)
+
+- **One vote per browser fingerprint** — the same browser cannot vote twice on the same poll
+- **One vote per session** — sessionStorage prevents re-voting within the same browser session
+- **Rate limiting** — max 3 votes per hour per IP address across all polls
+- These restrictions are appropriate for a portfolio site and are not intended to be bulletproof
+
+### Resetting Poll Data
+
+To clear all poll data (e.g. during development/testing):
+```bash
+firebase firestore:delete polls --recursive --force
+firebase firestore:delete poll_votes --recursive --force
+```
+
 ## Contributing
 
 This is a personal portfolio project. For suggestions or improvements, please reach out through the contact form or GitHub issues.

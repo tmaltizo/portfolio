@@ -10,36 +10,30 @@ function getRateLimitKey(ip, pollId) {
 }
 
 function getFingerprint(req) {
-  // Create a simple fingerprint from various request headers
   const userAgent = req.headers['user-agent'] || '';
   const acceptLanguage = req.headers['accept-language'] || '';
   const acceptEncoding = req.headers['accept-encoding'] || '';
+  const acceptCharset = req.headers['accept-charset'] || '';
+  const accept = req.headers['accept'] || '';
+  const dnt = req.headers['dnt'] || '';
+  const connection = req.headers['connection'] || '';
   
-  // Simple hash (in production, use crypto.createHash)
-  return `${userAgent}-${acceptLanguage}-${acceptEncoding}`.replace(/[^a-zA-Z0-9]/g, '').substring(0, 32);
+  const raw = `${userAgent}-${acceptLanguage}-${acceptEncoding}-${acceptCharset}-${accept}-${dnt}-${connection}`;
+  return raw.replace(/[^a-zA-Z0-9]/g, '').substring(0, 64);
 }
 
-async function checkRateLimit(ip, pollId, fingerprint) {
+async function checkRateLimit(ip, pollId, fingerprint, db) {
   const now = Date.now();
   const windowMs = 60 * 60 * 1000; // 1 hour window
   const maxVotes = 3; // Max 3 votes per hour per IP
-  
-  // Check IP-based rate limiting
+
+  // Check in-memory rate limiting (fast)
   const ipKey = getRateLimitKey(ip, pollId);
   const ipData = rateLimitStore.get(ipKey);
-  
   if (ipData && ipData.count >= maxVotes && (now - ipData.firstVote) < windowMs) {
     return { allowed: false, reason: 'IP rate limit exceeded' };
   }
-  
-  // Check fingerprint-based rate limiting (prevents multiple browsers)
-  const fingerprintKey = `fingerprint-${pollId}-${fingerprint}`;
-  const fingerprintData = rateLimitStore.get(fingerprintKey);
-  
-  if (fingerprintData && fingerprintData.count >= 1 && (now - fingerprintData.firstVote) < windowMs) {
-    return { allowed: false, reason: 'Fingerprint rate limit exceeded' };
-  }
-  
+
   return { allowed: true };
 }
 
@@ -93,18 +87,20 @@ export default async function handler(req, res) {
     const fingerprint = getFingerprint(req);
 
     // Check rate limits
-    const rateLimitCheck = await checkRateLimit(ip, pollId, fingerprint);
+    const rateLimitCheck = await checkRateLimit(ip, pollId, fingerprint, db);
     if (!rateLimitCheck.allowed) {
       return res.status(429).json({ error: rateLimitCheck.reason });
     }
 
     // Check if this fingerprint already voted in this poll
     const votesRef = collection(db, 'poll_votes');
-    const voteQuery = query(votesRef, where('pollId', '==', pollId), where('fingerprint', '==', fingerprint));
-    const existingVotes = await getDocs(voteQuery);
+    if (process.env.NODE_ENV !== 'development') {
+      const voteQuery = query(votesRef, where('pollId', '==', pollId), where('fingerprint', '==', fingerprint));
+      const existingVotes = await getDocs(voteQuery);
 
-    if (!existingVotes.empty) {
-      return res.status(409).json({ error: 'You have already voted in this poll' });
+      if (!existingVotes.empty) {
+        return res.status(409).json({ error: 'You have already voted in this poll' });
+      }
     }
 
     // Reference to the poll document
@@ -153,7 +149,7 @@ export default async function handler(req, res) {
       votedAt: serverTimestamp()
     });
 
-    // Update rate limiting
+    // Update in-memory rate limiting
     updateRateLimit(ip, pollId, fingerprint);
 
     // Return updated poll data
