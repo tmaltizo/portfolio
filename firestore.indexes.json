@@ -9,22 +9,8 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "fingerprint",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "ip_votes",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "pollId",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "ip",
-          "order": "ASCENDING"
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
         }
       ]
     },
@@ -35,6 +21,10 @@
         {
           "fieldPath": "email",
           "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
         }
       ]
     }
