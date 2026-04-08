@@ -110,8 +110,7 @@ export default function ProjectsPage({ projects, featuredProjects, categories, t
               </h1>
             </div>
             <p className="text-lg md:text-xl text-light-text dark:text-dark-text max-w-3xl mx-auto leading-relaxed">
-              Explore my software development projects, from web applications to CLI tools. 
-              Each project showcases different technologies and approaches to solving real-world problems.
+              Feel free to check out my work and see what I&apos;ve been working on. If you have any inquiries, please head over to the &quot;about&quot; section and send me a message there. Thanks for visiting!
             </p>
           </header>
 
